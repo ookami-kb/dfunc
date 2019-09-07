@@ -1,3 +1,12 @@
+## 0.0.6
+- Added functions:
+    - ignore
+    - always
+    - T
+    - F
+    - substring
+    - limit
+
 ## 0.0.5
 - Added functions:
     - map
