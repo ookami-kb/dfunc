@@ -1,4 +1,4 @@
-import 'package:dfunc/src/limit.dart';
+import 'package:dfunc/dfunc.dart';
 import 'package:test/test.dart';
 
 void main() {
