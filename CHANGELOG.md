@@ -1,3 +1,9 @@
+## 0.0.5
+- Added functions:
+    - map
+    - complement
+    - isEmpty
+
 ## 0.0.4
 - Updated description
 
