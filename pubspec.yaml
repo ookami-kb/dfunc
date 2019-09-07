@@ -1,6 +1,7 @@
 name: dfunc
 description: A starting point for Dart libraries or applications.
 version: 0.0.1
+homepage: https://github.com/ookami-kb/dfunc
 author: Kirill Bubochkin <ookami.kb@gmail.com>
 
 environment:
