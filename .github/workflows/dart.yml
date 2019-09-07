@@ -3,11 +3,11 @@ name: Dart CI
 on:
   push:
     branches:
-    - master
+      - master
     
   pull_request:
     branches:
-    -master
+      -master
 
 jobs:
   build:
@@ -18,8 +18,8 @@ jobs:
       image:  google/dart:latest
     
     steps:
-    - uses: actions/checkout@v1
-    - name: Install dependencies
-      run: pub get
-    - name: Run tests
-      run: pub run test
+      - uses: actions/checkout@v1
+      - name: Install dependencies
+        run: pub get
+      - name: Run tests
+        run: pub run test
