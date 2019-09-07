@@ -1,7 +1,8 @@
-A library for Dart developers.
+![](https://github.com/ookami-kb/dfunc/workflows/Dart%20CI/badge.svg)
 
-Created from templates made available by Stagehand under a BSD-style
-[license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
+Functional batteries for Dart programming language.
+
+Heavily inspired by such libraries as `ramda.js` and `lodash`.
 
 ## Usage
 
