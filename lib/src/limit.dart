@@ -1,8 +1,8 @@
-import 'dart:math';
+import 'package:dfunc/dfunc.dart';
 
 /// Returns string limited to the `maxLength` number of characters.
 ///
 /// If passed string is shorter than limit, it returns passed string.
 /// If passed string is `null`, it returns empty string.
 String Function(String) limit(int maxLength) =>
-    (String s) => s == null ? '' : s.substring(0, min(maxLength, s.length));
+    (String s) => substring(0, maxLength, s);
