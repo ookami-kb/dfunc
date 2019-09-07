@@ -12,14 +12,10 @@ import 'dart:math';
 //  string.substring(1, 4); // 'art'
 //  string.substring(1, 40); // 'artlang'
 /// ```
-String substring(
-  int startIndex,
-  int endIndex,
-  String str,
-) =>
+String substring(String str, int startIndex, [int endIndex]) =>
     (str == null || str.isEmpty)
         ? ''
         : str.substring(
             min(startIndex, str.length - 1),
-            min(endIndex, str.length),
+            min(endIndex ?? str.length, str.length),
           );
