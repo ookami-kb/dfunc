@@ -9,8 +9,8 @@ import 'dart:math';
 ///
 /// ```dart
 /// var string = 'dartlang';
-//  string.substring(1, 4); // 'art'
-//  string.substring(1, 40); // 'artlang'
+///  string.substring(1, 4); // 'art'
+///  string.substring(1, 40); // 'artlang'
 /// ```
 String substring(String str, int startIndex, [int endIndex]) =>
     (str == null || str.isEmpty)
