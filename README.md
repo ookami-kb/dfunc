@@ -11,7 +11,8 @@ A simple usage example:
 import 'package:dfunc/dfunc.dart';
 
 main() {
-  var awesome = new Awesome();
+  final items = ['a', 'b', 'c'];
+  print('mapped: ${mapIndexed((i, e) => '$e$i', items)}');
 }
 ```
 
@@ -19,4 +20,4 @@ main() {
 
 Please file feature requests and bugs at the [issue tracker][tracker].
 
-[tracker]: http://example.com/issues/replaceme
+[tracker]: https://github.com/ookami-kb/dfunc/issues
