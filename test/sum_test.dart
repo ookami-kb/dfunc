@@ -3,7 +3,7 @@ import 'package:test/test.dart';
 
 void main() {
   test('sum of empty list equals 0', () {
-    expect(sum([]), 0);
+    expect(sum(<int>[]), 0);
   });
 
   test('sum of 1-element list equals element', () {
