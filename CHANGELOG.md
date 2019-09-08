@@ -1,3 +1,7 @@
+## 0.0.7
+- Make sum func generic
+- Added pipe functions
+
 ## 0.0.6
 - Added functions:
     - ignore
