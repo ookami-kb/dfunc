@@ -2,6 +2,7 @@ library dfunc;
 
 export 'src/always.dart';
 export 'src/complement.dart';
+export 'src/either.dart';
 export 'src/f.dart';
 export 'src/identity.dart';
 export 'src/if_not_null.dart';

@@ -1,3 +1,7 @@
+## 0.1.0
+- Depends on Dart 2.6.0
+- Added Either
+
 ## 0.0.7
 - Make sum func generic
 - Added pipe functions
