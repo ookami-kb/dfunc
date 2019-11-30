@@ -30,6 +30,12 @@ void main() {
     expect(null, either.left);
   });
 
+  test('maps async Either correctly', () async {
+    final either = Either.right('123').mapAsync(int.parse);
+    expect(123, (await either).right);
+    expect(null, (await either).left);
+  });
+
   test('flatMaps Either correctly', () {
     final either =
         Either.right('123').flatMap((v) => Either.right(int.parse(v)));

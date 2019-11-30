@@ -21,6 +21,8 @@ abstract class Either<L, R> {
 
   Either<L, T> map<T>(T Function(R) f);
 
+  Future<Either<L, T>> mapAsync<T>(FutureOr<T> Function(R) f);
+
   Either<L, T> flatMap<T>(Either<L, T> Function(R) f);
 
   Future<Either<L, T>> flatMapAsync<T>(FutureOr<Either<L, T>> Function(R) f);
@@ -47,6 +49,10 @@ class _Left<L, R> extends Either<L, R> {
   Future<Either<L, T>> flatMapAsync<T>(
           FutureOr<Either<L, T>> Function(R) f) async =>
       _Left._(_value);
+
+  @override
+  Future<Either<L, T>> mapAsync<T>(FutureOr<T> Function(R) f) async =>
+      _Left._(_value);
 }
 
 class _Right<L, R> extends Either<L, R> {
@@ -70,6 +76,10 @@ class _Right<L, R> extends Either<L, R> {
   Future<Either<L, T>> flatMapAsync<T>(
           FutureOr<Either<L, T>> Function(R) f) async =>
       f(_value);
+
+  @override
+  Future<Either<L, T>> mapAsync<T>(FutureOr<T> Function(R) f) async =>
+      _Right._(f(_value));
 }
 
 extension EitherFutureExtension<L, R> on Either<FutureOr<L>, FutureOr<R>> {

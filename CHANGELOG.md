@@ -1,3 +1,6 @@
+## 0.1.3
+- Added Either::mapAsync function
+
 ## 0.1.2
 - Added Either::map function
 
