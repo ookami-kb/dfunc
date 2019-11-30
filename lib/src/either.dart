@@ -90,11 +90,17 @@ extension EitherFutureExtension<L, R> on Either<FutureOr<L>, FutureOr<R>> {
 }
 
 extension FutureEitherExtension<L, R> on Future<Either<L, R>> {
-  Future<Either<L, T>> map<T>(FutureOr<T> Function(R) f) =>
-      then((v) => v.map(f));
+  Future<Either<L, T>> map<T>(FutureOr<T> Function(R) f) async {
+    final either = await this;
+    return either.isLeft()
+        ? Either.left(either.left)
+        : Either.right(await f(either.right));
+  }
 
-  Future<Either<L, T>> flatMap<T>(FutureOr<Either<L, T>> Function(R) f) =>
-      then((v) => v.flatMap(f));
+  Future<Either<L, T>> flatMap<T>(FutureOr<Either<L, T>> Function(R) f) async {
+    final either = await this;
+    return either.isLeft() ? Either.left(either.left) : await f(either.right);
+  }
 
   Future<T> fold<T>(
     FutureOr<T> Function(L) onLeft,

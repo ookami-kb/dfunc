@@ -63,9 +63,27 @@ void main() {
     expect(value, true);
   });
 
+  test('folds Future<Either> with async mappers', () async {
+    final either = Future.value(Either.right('Test'));
+    final value = await either.fold((_) async => false, (_) async => true);
+    expect(value, true);
+  });
+
   test('maps Future<Either>', () async {
     final either = Future.value(Either.right('123'));
     final value = await either.map(int.parse);
+    expect(value.right, 123);
+  });
+
+  test('maps Future<Either> with async mapper', () async {
+    final either = Future.value(Either.right('123'));
+    final value = await either.map((x) async => int.parse(x));
+    expect(value.right, 123);
+  });
+
+  test('flatMaps Future<Either> with async mapper', () async {
+    final either = Future.value(Either.right('123'));
+    final value = await either.flatMap((x) async => Either.right(int.parse(x)));
     expect(value.right, 123);
   });
 

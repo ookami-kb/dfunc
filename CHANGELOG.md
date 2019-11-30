@@ -1,3 +1,6 @@
+## 0.1.5
+- Fixed error in Future<Either> extension functions
+
 ## 0.1.4
 - Added Future<Either>::map function
 - FutureEitherExtension functions parameters now return FutureOr
