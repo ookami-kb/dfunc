@@ -24,6 +24,12 @@ void main() {
     expect(either.fold(F, T), true);
   });
 
+  test('maps Either correctly', () {
+    final either = Either.right('123').map(int.parse);
+    expect(123, either.right);
+    expect(null, either.left);
+  });
+
   test('flatMaps Either correctly', () {
     final either =
         Either.right('123').flatMap((v) => Either.right(int.parse(v)));
@@ -33,7 +39,7 @@ void main() {
 
   test('flatMaps async Either correctly', () async {
     final either =
-    Either.right('123').flatMapAsync((v) => Either.right(int.parse(v)));
+        Either.right('123').flatMapAsync((v) => Either.right(int.parse(v)));
     expect(123, (await either).right);
     expect(null, (await either).left);
   });
@@ -48,6 +54,12 @@ void main() {
   test('folds Future<Either>', () async {
     final either = Future.value(Either.right('Test'));
     final value = await either.fold(F, T);
+    expect(value, true);
+  });
+
+  test('joins Future<Either>', () async {
+    final Future<Either<bool, bool>> either = Future.value(Either.right(true));
+    final value = await either.join();
     expect(value, true);
   });
 }

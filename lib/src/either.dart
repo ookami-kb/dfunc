@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:dfunc/dfunc.dart';
+
 abstract class Either<L, R> {
   Either._();
 
@@ -11,17 +13,17 @@ abstract class Either<L, R> {
 
   bool isRight() => this is _Right;
 
-  L get left => isLeft() ? (this as _Left<L, R>).value : null;
+  L get left => null;
 
-  R get right => isRight() ? (this as _Right<L, R>).value : null;
+  R get right => null;
 
   T fold<T>(T Function(L) onLeft, T Function(R) onRight);
 
-  Either<L, T> flatMap<T>(Either<L, T> Function(R) f) =>
-      fold((v) => _Left<L, T>._(v), (v) => f(v));
+  Either<L, T> map<T>(T Function(R) f);
 
-  Future<Either<L, T>> flatMapAsync<T>(FutureOr<Either<L, T>> Function(R) f) =>
-      fold((v) async => _Left<L, T>._(v), (v) async => f(v));
+  Either<L, T> flatMap<T>(Either<L, T> Function(R) f);
+
+  Future<Either<L, T>> flatMapAsync<T>(FutureOr<Either<L, T>> Function(R) f);
 }
 
 class _Left<L, R> extends Either<L, R> {
@@ -29,10 +31,22 @@ class _Left<L, R> extends Either<L, R> {
 
   final L _value;
 
-  L get value => _value;
+  @override
+  L get left => _value;
 
   @override
   T fold<T>(T Function(L) onLeft, T Function(R) onRight) => onLeft(_value);
+
+  @override
+  Either<L, T> map<T>(T Function(R) f) => _Left._(_value);
+
+  @override
+  Either<L, T> flatMap<T>(Either<L, T> Function(R) f) => _Left._(_value);
+
+  @override
+  Future<Either<L, T>> flatMapAsync<T>(
+          FutureOr<Either<L, T>> Function(R) f) async =>
+      _Left._(_value);
 }
 
 class _Right<L, R> extends Either<L, R> {
@@ -40,10 +54,22 @@ class _Right<L, R> extends Either<L, R> {
 
   final R _value;
 
-  R get value => _value;
+  @override
+  R get right => _value;
 
   @override
   T fold<T>(T Function(L) onLeft, T Function(R) onRight) => onRight(_value);
+
+  @override
+  Either<L, T> map<T>(T Function(R) f) => _Right._(f(_value));
+
+  @override
+  Either<L, T> flatMap<T>(Either<L, T> Function(R) f) => f(_value);
+
+  @override
+  Future<Either<L, T>> flatMapAsync<T>(
+          FutureOr<Either<L, T>> Function(R) f) async =>
+      f(_value);
 }
 
 extension EitherFutureExtension<L, R> on Either<FutureOr<L>, FutureOr<R>> {
@@ -64,6 +90,6 @@ extension FutureEitherExtension<L, R> on Future<Either<L, R>> {
 extension SameEitherExtension<T> on FutureOr<Either<T, T>> {
   Future<T> join() async {
     final x = await this;
-    return x.fold((x) => x, (x) => x);
+    return x.fold(identity, identity);
   }
 }

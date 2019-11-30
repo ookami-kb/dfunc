@@ -1,3 +1,6 @@
+## 0.1.2
+- Added Either::map function
+
 ## 0.1.1
 - Added Either extensions
 
