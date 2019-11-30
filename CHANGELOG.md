@@ -1,3 +1,7 @@
+## 0.1.4
+- Added Future<Either>::map function
+- FutureEitherExtension functions parameters now return FutureOr
+
 ## 0.1.3
 - Added Either::mapAsync function
 

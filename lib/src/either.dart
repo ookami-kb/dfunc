@@ -90,12 +90,16 @@ extension EitherFutureExtension<L, R> on Either<FutureOr<L>, FutureOr<R>> {
 }
 
 extension FutureEitherExtension<L, R> on Future<Either<L, R>> {
-  Future<Either<L, T>> map<T>(T Function(R) f) => then((v) => v.map(f));
+  Future<Either<L, T>> map<T>(FutureOr<T> Function(R) f) =>
+      then((v) => v.map(f));
 
-  Future<Either<L, T>> flatMap<T>(Either<L, T> Function(R) f) =>
+  Future<Either<L, T>> flatMap<T>(FutureOr<Either<L, T>> Function(R) f) =>
       then((v) => v.flatMap(f));
 
-  Future<T> fold<T>(T Function(L) onLeft, T Function(R) onRight) =>
+  Future<T> fold<T>(
+    FutureOr<T> Function(L) onLeft,
+    FutureOr<T> Function(R) onRight,
+  ) =>
       then((v) => v.fold(onLeft, onRight));
 }
 
