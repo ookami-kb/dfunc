@@ -31,6 +31,13 @@ void main() {
     expect(null, either.left);
   });
 
+  test('flatMaps async Either correctly', () async {
+    final either =
+    Either.right('123').flatMapAsync((v) => Either.right(int.parse(v)));
+    expect(123, (await either).right);
+    expect(null, (await either).left);
+  });
+
   test('converts Either<Future> to Future<Either>', () async {
     final Either<Exception, Future<String>> either1 =
         Either.right(Future.value('Test'));

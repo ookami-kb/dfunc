@@ -1,3 +1,6 @@
+## 0.1.1
+- Added Either extensions
+
 ## 0.1.0
 - Depends on Dart 2.6.0
 - Added Either

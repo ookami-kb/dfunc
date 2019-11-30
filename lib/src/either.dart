@@ -19,6 +19,9 @@ abstract class Either<L, R> {
 
   Either<L, T> flatMap<T>(Either<L, T> Function(R) f) =>
       fold((v) => _Left<L, T>._(v), (v) => f(v));
+
+  Future<Either<L, T>> flatMapAsync<T>(FutureOr<Either<L, T>> Function(R) f) =>
+      fold((v) async => _Left<L, T>._(v), (v) async => f(v));
 }
 
 class _Left<L, R> extends Either<L, R> {
@@ -56,4 +59,11 @@ extension FutureEitherExtension<L, R> on Future<Either<L, R>> {
 
   Future<T> fold<T>(T Function(L) onLeft, T Function(R) onRight) =>
       then((v) => v.fold(onLeft, onRight));
+}
+
+extension SameEitherExtension<T> on FutureOr<Either<T, T>> {
+  Future<T> join() async {
+    final x = await this;
+    return x.fold((x) => x, (x) => x);
+  }
 }
