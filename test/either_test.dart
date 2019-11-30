@@ -63,6 +63,12 @@ void main() {
     expect(value, true);
   });
 
+  test('maps Future<Either>', () async {
+    final either = Future.value(Either.right('123'));
+    final value = await either.map(int.parse);
+    expect(value.right, 123);
+  });
+
   test('joins Future<Either>', () async {
     final Future<Either<bool, bool>> either = Future.value(Either.right(true));
     final value = await either.join();
