@@ -122,4 +122,16 @@ void main() {
       expect(optional.get(), 123);
     });
   });
+
+  group('toOptional()', () {
+    test('creates empty Optional', () {
+      final String value = null;
+      expect(value.toOptional().isEmpty(), true);
+    });
+
+    test('creates non-empty Optional', () {
+      final String value = 'test';
+      expect(value.toOptional().get(), 'test');
+    });
+  });
 }

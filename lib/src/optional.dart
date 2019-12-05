@@ -50,3 +50,7 @@ extension FutureOptionalExtension<T> on Future<Optional<T>> {
   Future<Optional<U>> flatMap<U>(FutureOr<Optional<U>> Function(T) f) async =>
       (await this).flatMapAsync(f);
 }
+
+extension OptionalExtension<T> on T {
+  Optional<T> toOptional() => Optional.of(this);
+}
