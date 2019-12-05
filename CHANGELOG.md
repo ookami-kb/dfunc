@@ -1,3 +1,6 @@
+## 0.1.6
+- Added Optional
+
 ## 0.1.5
 - Fixed error in Future<Either> extension functions
 
