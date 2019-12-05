@@ -12,6 +12,7 @@ export 'src/limit.dart';
 export 'src/map.dart';
 export 'src/map_by.dart';
 export 'src/map_indexed.dart';
+export 'src/optional.dart';
 export 'src/pipe.dart';
 export 'src/substring.dart';
 export 'src/sum.dart';

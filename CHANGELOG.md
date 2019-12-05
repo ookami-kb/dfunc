@@ -1,3 +1,6 @@
+## 0.1.8
+- Exported Optional
+
 ## 0.1.7
 - Added toOptional() extension method
 
