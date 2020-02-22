@@ -1,3 +1,6 @@
+## 0.1.9
+- Added Optional::where function
+
 ## 0.1.8
 - Exported Optional
 

@@ -134,4 +134,21 @@ void main() {
       expect(value.toOptional().get(), 'test');
     });
   });
+
+  group('where()', () {
+    test('returns same optional if value matches predicate', () {
+      final value = 'test'.toOptional();
+      expect(value.where((v) => v == 'test'), value);
+    });
+
+    test('returns empty optional if value does not match predicate', () {
+      final value = 'test'.toOptional();
+      expect(value.where((v) => v == 'smth').isEmpty(), true);
+    });
+
+    test('returns empty optional if initial optional is empty', () {
+      final value = Optional.empty();
+      expect(value.where((v) => v == 'smth').isEmpty(), true);
+    });
+  });
 }

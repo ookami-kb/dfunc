@@ -11,9 +11,10 @@ class Optional<T> {
 
   bool isEmpty() => _value == null;
 
-  T get() => _value == null
-      ? throw StateError('get() called on empty Optional.')
-      : _value;
+  T get() =>
+      _value == null
+          ? throw StateError('get() called on empty Optional.')
+          : _value;
 
   T getOrNull() => _value;
 
@@ -29,8 +30,11 @@ class Optional<T> {
       _value == null ? Optional.empty() : Optional.of(await f(_value));
 
   Future<Optional<U>> flatMapAsync<U>(
-          FutureOr<Optional<U>> Function(T) f) async =>
+      FutureOr<Optional<U>> Function(T) f) async =>
       _value == null ? Optional.empty() : await f(_value);
+
+  Optional<T> where(bool Function(T) predicate) =>
+      map((v) => predicate(v) ? v : null);
 
   @override
   int get hashCode => _value.hashCode;
