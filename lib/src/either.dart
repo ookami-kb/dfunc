@@ -25,6 +25,12 @@ abstract class Either<L, R> {
 
   Either<L, T> flatMap<T>(Either<L, T> Function(R) f);
 
+  Either<L, Product2<R, R2>> combine2<R2>(Either<L, R2> other) => isLeft()
+      ? Either.left(left)
+      : other.isLeft()
+          ? Either.left(other.left)
+          : Either.right(Tuple2(right, other.right));
+
   Future<Either<L, T>> flatMapAsync<T>(FutureOr<Either<L, T>> Function(R) f);
 }
 

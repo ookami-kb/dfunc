@@ -38,21 +38,21 @@ void main() {
 
   test('flatMaps Either correctly', () {
     final either =
-        Either.right('123').flatMap((v) => Either.right(int.parse(v)));
+    Either.right('123').flatMap((v) => Either.right(int.parse(v)));
     expect(123, either.right);
     expect(null, either.left);
   });
 
   test('flatMaps async Either correctly', () async {
     final either =
-        Either.right('123').flatMapAsync((v) => Either.right(int.parse(v)));
+    Either.right('123').flatMapAsync((v) => Either.right(int.parse(v)));
     expect(123, (await either).right);
     expect(null, (await either).left);
   });
 
   test('converts Either<Future> to Future<Either>', () async {
     final Either<Exception, Future<String>> either1 =
-        Either.right(Future.value('Test'));
+    Either.right(Future.value('Test'));
     final Either<Exception, String> either2 = await either1.wait();
     expect(either2.right, 'Test');
   });
@@ -91,5 +91,31 @@ void main() {
     final Future<Either<bool, bool>> either = Future.value(Either.right(true));
     final value = await either.join();
     expect(value, true);
+  });
+
+  group('combines 2 eithers', () {
+    test('returns left if first is left', () {
+      final Either<String, int> e1 = Either.left('left');
+      final Either<String, double> e2 = Either.right(1.0);
+      final result = e1.combine2(e2);
+
+      expect(result.left, 'left');
+    });
+
+    test('returns left if second is left', () {
+      final Either<String, int> e1 = Either.right(1);
+      final Either<String, double> e2 = Either.left('left');
+      final result = e1.combine2(e2);
+
+      expect(result.left, 'left');
+    });
+
+    test('returns right if both are right', () {
+      final Either<String, int> e1 = Either.right(1);
+      final Either<String, double> e2 = Either.right(1.0);
+      final result = e1.combine2(e2);
+
+      expect(result.right, Tuple2(1, 1.0));
+    });
   });
 }
