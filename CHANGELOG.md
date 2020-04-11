@@ -1,3 +1,8 @@
+## 0.1.10
+- Added Product type
+- Added Coproduct type
+- Added Either::combine2 function
+
 ## 0.1.9
 - Added Optional::where function
 
