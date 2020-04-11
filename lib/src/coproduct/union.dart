@@ -44,6 +44,7 @@ class Union2<T1, T2> extends Union implements Coproduct2<T1, T2> {
       case 2:
         return ifSecond(_value2);
     }
+    throw ArgumentError('Wrong discriminator: $_discriminator');
   }
 }
 
@@ -78,6 +79,7 @@ class Union3<T1, T2, T3> extends Union implements Coproduct3<T1, T2, T3> {
       case 3:
         return ifThird(_value3);
     }
+    throw ArgumentError('Wrong discriminator: $_discriminator');
   }
 }
 
@@ -125,6 +127,7 @@ class Union4<T1, T2, T3, T4> extends Union
       case 4:
         return ifFourth(_value4);
     }
+    throw ArgumentError('Wrong discriminator: $_discriminator');
   }
 }
 
@@ -180,5 +183,6 @@ class Union5<T1, T2, T3, T4, T5> extends Union
       case 5:
         return ifFifth(_value5);
     }
+    throw ArgumentError('Wrong discriminator: $_discriminator');
   }
 }

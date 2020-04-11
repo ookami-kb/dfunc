@@ -1,3 +1,7 @@
+## 0.1.11
+- Fixed dependencies
+- Fix analyzer issues
+
 ## 0.1.10
 - Added Product type
 - Added Coproduct type

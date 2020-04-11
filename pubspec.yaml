@@ -1,6 +1,6 @@
 name: dfunc
 description: Functional batteries for Dart. Inspired by functional javascript libraries such as ramda.js or lodash.
-version: 0.1.10
+version: 0.1.11
 homepage: https://github.com/ookami-kb/dfunc
 author: Kirill Bubochkin <ookami.kb@gmail.com>
 
@@ -8,7 +8,7 @@ environment:
   sdk: '>=2.6.0 <3.0.0'
 
 dependencies:
-  quiver: ^2.1.3
+  quiver: '>=2.0.0 <3.0.0'
 #  path: ^1.6.0
 
 dev_dependencies:
