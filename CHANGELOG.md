@@ -1,3 +1,6 @@
+## 0.2.1
+- Exported Eithers functions
+
 ## 0.2.0
 - Added Eithers::combine*
 - Renamed Either::combine2 to Either::combine

@@ -5,6 +5,7 @@ export 'src/complement.dart';
 export 'src/coproduct/coproduct.dart';
 export 'src/coproduct/union.dart';
 export 'src/either/either.dart';
+export 'src/either/eithers.dart';
 export 'src/either/extensions.dart';
 export 'src/f.dart';
 export 'src/identity.dart';
