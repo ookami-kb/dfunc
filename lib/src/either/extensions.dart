@@ -20,23 +20,38 @@ extension EitherFutureExtension<L, R> on Either<FutureOr<L>, FutureOr<R>> {
 }
 
 extension FutureEitherExtension<L, R> on Future<Either<L, R>> {
-  Future<Either<L, T>> map<T>(FutureOr<T> Function(R) f) async {
+  Future<Either<L, T>> mapAsync<T>(FutureOr<T> Function(R) f) async {
     final either = await this;
     return either.isLeft()
         ? Either.left(either.left)
         : Either.right(await f(either.right));
   }
 
-  Future<Either<L, T>> flatMap<T>(FutureOr<Either<L, T>> Function(R) f) async {
+  Future<Either<L, T>> flatMapAsync<T>(
+      FutureOr<Either<L, T>> Function(R) f) async {
     final either = await this;
     return either.isLeft() ? Either.left(either.left) : await f(either.right);
   }
 
-  Future<T> fold<T>(
+  Future<T> foldAsync<T>(
     FutureOr<T> Function(L) onLeft,
     FutureOr<T> Function(R) onRight,
   ) =>
       then((v) => v.fold(onLeft, onRight));
+
+  @Deprecated('Use mapAsync instead.')
+  Future<Either<L, T>> map<T>(FutureOr<T> Function(R) f) => mapAsync(f);
+
+  @Deprecated('Use flatMapAsync instead.')
+  Future<Either<L, T>> flatMap<T>(FutureOr<Either<L, T>> Function(R) f) =>
+      flatMapAsync(f);
+
+  @Deprecated('Use foldAsync instead.')
+  Future<T> fold<T>(
+    FutureOr<T> Function(L) onLeft,
+    FutureOr<T> Function(R) onRight,
+  ) =>
+      foldAsync(onLeft, onRight);
 }
 
 extension SameEitherExtension<T> on FutureOr<Either<T, T>> {

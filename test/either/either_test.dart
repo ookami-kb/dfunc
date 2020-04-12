@@ -38,52 +38,53 @@ void main() {
 
   test('flatMaps Either correctly', () {
     final either =
-    Either.right('123').flatMap((v) => Either.right(int.parse(v)));
+        Either.right('123').flatMap((v) => Either.right(int.parse(v)));
     expect(123, either.right);
     expect(null, either.left);
   });
 
   test('flatMaps async Either correctly', () async {
     final either =
-    Either.right('123').flatMapAsync((v) => Either.right(int.parse(v)));
+        Either.right('123').flatMapAsync((v) => Either.right(int.parse(v)));
     expect(123, (await either).right);
     expect(null, (await either).left);
   });
 
   test('converts Either<Future> to Future<Either>', () async {
     final Either<Exception, Future<String>> either1 =
-    Either.right(Future.value('Test'));
+        Either.right(Future.value('Test'));
     final Either<Exception, String> either2 = await either1.wait();
     expect(either2.right, 'Test');
   });
 
   test('folds Future<Either>', () async {
     final either = Future.value(Either.right('Test'));
-    final value = await either.fold(F, T);
+    final value = await either.foldAsync(F, T);
     expect(value, true);
   });
 
   test('folds Future<Either> with async mappers', () async {
     final either = Future.value(Either.right('Test'));
-    final value = await either.fold((_) async => false, (_) async => true);
+    final value = await either.foldAsync((_) async => false, (_) async => true);
     expect(value, true);
   });
 
   test('maps Future<Either>', () async {
     final either = Future.value(Either.right('123'));
-    final value = await either.map(int.parse);
+    final value = await either.mapAsync(int.parse);
     expect(value.right, 123);
   });
 
   test('maps Future<Either> with async mapper', () async {
     final either = Future.value(Either.right('123'));
-    final value = await either.map((x) async => int.parse(x));
+    final value = await either.mapAsync((x) async => int.parse(x));
     expect(value.right, 123);
   });
 
   test('flatMaps Future<Either> with async mapper', () async {
     final either = Future.value(Either.right('123'));
-    final value = await either.flatMap((x) async => Either.right(int.parse(x)));
+    final value =
+        await either.flatMapAsync((x) async => Either.right(int.parse(x)));
     expect(value.right, 123);
   });
 
@@ -97,7 +98,7 @@ void main() {
     test('returns left if first is left', () {
       final Either<String, int> e1 = Either.left('left');
       final Either<String, double> e2 = Either.right(1.0);
-      final result = e1.combine2(e2);
+      final result = e1.combine(e2);
 
       expect(result.left, 'left');
     });
@@ -105,7 +106,7 @@ void main() {
     test('returns left if second is left', () {
       final Either<String, int> e1 = Either.right(1);
       final Either<String, double> e2 = Either.left('left');
-      final result = e1.combine2(e2);
+      final result = e1.combine(e2);
 
       expect(result.left, 'left');
     });
@@ -113,7 +114,7 @@ void main() {
     test('returns right if both are right', () {
       final Either<String, int> e1 = Either.right(1);
       final Either<String, double> e2 = Either.right(1.0);
-      final result = e1.combine2(e2);
+      final result = e1.combine(e2);
 
       expect(result.right, Tuple2(1, 1.0));
     });
