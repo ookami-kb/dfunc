@@ -53,6 +53,9 @@ class _Left<L, R> extends Either<L, R> {
 
   @override
   bool operator ==(other) => other is _Left<L, R> && other._value == _value;
+
+  @override
+  String toString() => 'Left($_value)';
 }
 
 class _Right<L, R> extends Either<L, R> {
@@ -80,4 +83,7 @@ class _Right<L, R> extends Either<L, R> {
 
   @override
   bool operator ==(other) => other is _Right<L, R> && other._value == _value;
+
+  @override
+  String toString() => 'Right($_value)';
 }
