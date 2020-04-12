@@ -1,11 +1,11 @@
 import 'package:dfunc/dfunc.dart';
 
 abstract class Either<L, R> {
-  Either._();
+  const Either._();
 
-  factory Either.left(L value) => _Left._(value);
+  const factory Either.left(L value) = _Left<L, R>._;
 
-  factory Either.right(R value) => _Right._(value);
+  const factory Either.right(R value) = _Right<L, R>._;
 
   bool isLeft() => this is _Left;
 
@@ -29,7 +29,7 @@ abstract class Either<L, R> {
 }
 
 class _Left<L, R> extends Either<L, R> {
-  _Left._(this._value) : super._();
+  const _Left._(this._value) : super._();
 
   final L _value;
 
@@ -50,7 +50,7 @@ class _Left<L, R> extends Either<L, R> {
 }
 
 class _Right<L, R> extends Either<L, R> {
-  _Right._(this._value) : super._();
+  const _Right._(this._value) : super._();
 
   final R _value;
 
