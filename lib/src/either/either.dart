@@ -47,6 +47,12 @@ class _Left<L, R> extends Either<L, R> {
 
   @override
   Either<L, T> flatMap<T>(Either<L, T> Function(R) f) => _Left._(_value);
+
+  @override
+  int get hashCode => _value.hashCode;
+
+  @override
+  bool operator ==(other) => other is _Left<L, R> && other._value == _value;
 }
 
 class _Right<L, R> extends Either<L, R> {
@@ -68,4 +74,10 @@ class _Right<L, R> extends Either<L, R> {
 
   @override
   Either<L, T> flatMap<T>(Either<L, T> Function(R) f) => f(_value);
+
+  @override
+  int get hashCode => _value.hashCode;
+
+  @override
+  bool operator ==(other) => other is _Right<L, R> && other._value == _value;
 }
