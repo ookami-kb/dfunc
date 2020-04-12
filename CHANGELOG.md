@@ -1,3 +1,7 @@
+## 0.2.0
+- Added Eithers::combine*
+- Renamed Either::combine2 to Either::combine
+
 ## 0.1.11
 - Fixed dependencies
 - Fix analyzer issues
