@@ -11,9 +11,9 @@ abstract class Either<L, R> {
 
   bool isRight() => this is _Right;
 
-  L get left => null;
+  L get left;
 
-  R get right => null;
+  R get right;
 
   T fold<T>(T Function(L) onLeft, T Function(R) onRight);
 
@@ -37,6 +37,9 @@ class _Left<L, R> extends Either<L, R> {
   L get left => _value;
 
   @override
+  R get right => throw StateError('right called on left value');
+
+  @override
   T fold<T>(T Function(L) onLeft, T Function(R) onRight) => onLeft(_value);
 
   @override
@@ -50,6 +53,9 @@ class _Right<L, R> extends Either<L, R> {
   _Right._(this._value) : super._();
 
   final R _value;
+
+  @override
+  L get left => throw StateError('left called on right value');
 
   @override
   R get right => _value;

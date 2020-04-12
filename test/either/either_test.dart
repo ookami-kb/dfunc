@@ -26,28 +26,27 @@ void main() {
 
   test('maps Either correctly', () {
     final either = Either.right('123').map(int.parse);
-    expect(123, either.right);
-    expect(null, either.left);
+    expect(either.right, 123);
+    expect(() => either.left, throwsStateError);
   });
 
   test('maps async Either correctly', () async {
     final either = Either.right('123').mapAsync(int.parse);
-    expect(123, (await either).right);
-    expect(null, (await either).left);
+    final result = await either;
+    expect(result.right, 123);
+    expect(() => result.left, throwsStateError);
   });
 
   test('flatMaps Either correctly', () {
     final either =
         Either.right('123').flatMap((v) => Either.right(int.parse(v)));
     expect(123, either.right);
-    expect(null, either.left);
   });
 
   test('flatMaps async Either correctly', () async {
     final either =
         Either.right('123').flatMapAsync((v) => Either.right(int.parse(v)));
     expect(123, (await either).right);
-    expect(null, (await either).left);
   });
 
   test('converts Either<Future> to Future<Either>', () async {
