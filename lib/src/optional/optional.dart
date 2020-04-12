@@ -1,9 +1,13 @@
 class Optional<T> {
-  Optional._(this._value);
+  const Optional._(this._value);
 
-  factory Optional.of(T value) => Optional._(value);
+  const Optional.of(T value) : this._(value);
 
-  factory Optional.empty() => Optional.of(null);
+  const Optional.empty() : this._(null);
+
+  Optional.some(T value) : _value = value {
+    if (_value == null) throw ArgumentError('Must not be null.');
+  }
 
   final T _value;
 
