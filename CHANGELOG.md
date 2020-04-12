@@ -1,3 +1,8 @@
+## 0.3.0
+- Either now throws StateError for wrong branch
+- Added const constructors to Either and Optional
+- Added == for Either
+
 ## 0.2.1
 - Exported Eithers functions
 
