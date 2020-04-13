@@ -1,3 +1,6 @@
+## 0.3.1
+- Added Sealed annotation
+
 ## 0.3.0
 - Either now throws StateError for wrong branch
 - Added const constructors to Either and Optional

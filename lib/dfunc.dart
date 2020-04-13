@@ -2,6 +2,7 @@ library dfunc;
 
 export 'src/always.dart';
 export 'src/complement.dart';
+export 'src/coproduct/annotations.dart';
 export 'src/coproduct/coproduct.dart';
 export 'src/coproduct/union.dart';
 export 'src/either/either.dart';

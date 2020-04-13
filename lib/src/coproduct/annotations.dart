@@ -1,0 +1,3 @@
+class Sealed {
+  const Sealed();
+}
