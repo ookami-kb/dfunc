@@ -1,0 +1,14 @@
+targets:
+  $default:
+    builders:
+      sealed:
+        enabled: true
+
+builders:
+  sealed:
+    import: "package:dfunc_builder/src/sealed/builder.dart"
+    builder_factories: ["sealedBuilder"]
+    build_extensions: {".dart": [".sealed.g.part"]}
+    auto_apply: dependents
+    build_to: cache
+    applies_builders: ["source_gen|combining_builder"]
