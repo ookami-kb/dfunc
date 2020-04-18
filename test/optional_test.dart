@@ -98,12 +98,12 @@ void main() {
     Future<Optional<String>> create(String value) async => Optional.of(value);
 
     test('works for empty Optional', () async {
-      final optional = await create(null).map(int.parse);
+      final optional = await create(null).mapAsync(int.parse);
       expect(optional.isEmpty(), true);
     });
 
     test('works for non-empty Optional', () async {
-      final optional = await create('123').map(int.parse);
+      final optional = await create('123').mapAsync(int.parse);
       expect(optional.get(), 123);
     });
   });
@@ -113,12 +113,12 @@ void main() {
     Optional<int> map(String value) => Optional.of(int.parse(value));
 
     test('works for empty Optional', () async {
-      final optional = await create(null).flatMap(map);
+      final optional = await create(null).flatMapAsync(map);
       expect(optional.isEmpty(), true);
     });
 
     test('works for non-empty Optional', () async {
-      final optional = await create('123').flatMap(map);
+      final optional = await create('123').flatMapAsync(map);
       expect(optional.get(), 123);
     });
   });

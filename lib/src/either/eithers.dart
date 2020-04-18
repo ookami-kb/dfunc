@@ -2,7 +2,9 @@ import 'package:dfunc/src/either/either.dart';
 import 'package:dfunc/src/product/product.dart';
 import 'package:dfunc/src/product/tuple.dart';
 
-class Eithers {
+abstract class Eithers {
+  Eithers._();
+
   static Either<L, Product2<R1, R2>> combine2<L, R1, R2>(
     Either<L, R1> first,
     Either<L, R2> second,

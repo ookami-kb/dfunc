@@ -16,11 +16,20 @@ extension OptionalAsync<T> on Optional<T> {
 }
 
 extension FutureOptionalExtension<T> on Future<Optional<T>> {
-  Future<Optional<U>> map<U>(FutureOr<U> Function(T) f) async =>
+  Future<Optional<U>> mapAsync<U>(FutureOr<U> Function(T) f) async =>
       (await this).mapAsync(f);
 
-  Future<Optional<U>> flatMap<U>(FutureOr<Optional<U>> Function(T) f) async =>
+  Future<Optional<U>> flatMapAsync<U>(
+    FutureOr<Optional<U>> Function(T) f,
+  ) async =>
       (await this).flatMapAsync(f);
+
+  @Deprecated('Use mapAsync instead.')
+  Future<Optional<U>> map<U>(FutureOr<U> Function(T) f) async => mapAsync(f);
+
+  @Deprecated('Use flatMapAsync instead.')
+  Future<Optional<U>> flatMap<U>(FutureOr<Optional<U>> Function(T) f) async =>
+      flatMapAsync(f);
 }
 
 extension OptionalExtension<T> on T {
