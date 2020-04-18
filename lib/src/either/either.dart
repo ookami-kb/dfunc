@@ -1,6 +1,15 @@
 import 'package:dfunc/dfunc.dart';
 
-abstract class Either<L, R> {
+/// One of the popular examples of [Coproduct2] type.
+///
+/// It represents a value that can be either of type [L] or of type [R].
+/// Usually [L] is assumed to be of Error type and [R] of Right type, e.g.
+/// in pseudo-code:
+///
+/// ```
+/// type Result<T> = Either<Exception, T>
+/// ```
+abstract class Either<L, R> implements Coproduct2<L, R> {
   const Either._();
 
   const factory Either.left(L value) = _Left<L, R>._;
@@ -16,6 +25,10 @@ abstract class Either<L, R> {
   R get right;
 
   T fold<T>(T Function(L) onLeft, T Function(R) onRight);
+
+  @override
+  T match<T>(T Function(L) ifFirst, T Function(R) ifSecond) =>
+      fold(ifFirst, ifSecond);
 
   Either<L, T> map<T>(T Function(R) f);
 

@@ -18,6 +18,18 @@ void main() {
     (_) => print('2'),
     (_) => print('3'),
   ); // prints 2
+
+  // Optional
+
+  final optional = Optional.of('test');
+  optional.isEmpty() == false;
+  optional.getOrNull() == 'test';
+
+  // Either
+
+  final Either<Exception, String> either = Either.right('test');
+  either.isRight() == true;
+  either.map((s) => s.toUpperCase()).right == 'TEST';
 }
 
 @sealed
