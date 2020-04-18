@@ -37,6 +37,8 @@ abstract class Base with _$Base {
   const Base._();
 }
 
+/// Can be used together with built_value library to create
+/// immutable cases.
 abstract class Item1 with _$Base implements Built<Item1, Item1Builder>, Base {
   factory Item1([Function(Item1Builder b) updates]) = _$Item1;
 

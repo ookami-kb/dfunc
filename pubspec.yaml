@@ -1,6 +1,6 @@
 name: dfunc
-description: Functional batteries for Dart. Inspired by functional javascript libraries such as ramda.js or lodash.
-version: 0.3.3
+description: Functional batteries for Dart. Implementation of Either, Optional etc.
+version: 0.3.4
 homepage: https://github.com/ookami-kb/dfunc
 
 environment:
