@@ -1,3 +1,6 @@
+## 0.3.2
+- Added @sealed annotation
+
 ## 0.3.1
 - Added Sealed annotation
 

@@ -19,7 +19,9 @@ class SealedGenerator extends Generator {
 
     for (final base in classElements) {
       final cases = library.allElements
-          .where((e) => e is ClassElement && e.supertype?.element == base)
+          .where((e) =>
+              e is ClassElement &&
+              e.allSupertypes.any((s) => s.element == base))
           .map((e) => e as ClassElement)
           .toList();
       result.add(_generate(base, cases));
@@ -48,7 +50,7 @@ class SealedGenerator extends Generator {
     ).join('\n');
 
     return '''
-mixin Sealed${base.name} implements Coproduct$arity<$generics> {
+mixin _\$${base.name} implements Coproduct$arity<$generics> {
     @override
     R match<R>($arguments,) {
       $branches

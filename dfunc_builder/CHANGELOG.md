@@ -1,3 +1,7 @@
+## 0.0.3
+- Renamed generated sealed class name to _$...
+- Sealed class can now implement base class
+
 ## 0.0.2
 - Updated dependencies
 
