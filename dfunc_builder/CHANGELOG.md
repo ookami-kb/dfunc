@@ -1,4 +1,7 @@
 ## 0.0.3
+- Loosened constraints for analyzer.
+
+## 0.0.3
 - Renamed generated sealed class name to _$...
 - Sealed class can now implement base class
 
