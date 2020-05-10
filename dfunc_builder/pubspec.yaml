@@ -1,6 +1,6 @@
 name: dfunc_builder
 description: Builder for dfunc package. This package does nothing without dfunc.
-version: 0.0.4
+version: 0.0.5
 homepage: https://github.com/ookami-kb/dfunc
 
 environment:
@@ -12,7 +12,7 @@ dependencies:
   build_runner: '>=1.0.0 <2.0.0'
   source_gen: '>=0.9.4 <0.10.0'
   collection: '>=1.14.0 <2.0.0'
-  dfunc: '>=0.3.2 <0.4.0'
+  dfunc: '>=0.3.5 <0.4.0'
 
 dev_dependencies:
   pedantic: ^1.8.0

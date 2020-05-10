@@ -1,3 +1,6 @@
+## 0.0.5
+- Sealed generator works for arity up to 10
+
 ## 0.0.3
 - Loosened constraints for analyzer.
 
