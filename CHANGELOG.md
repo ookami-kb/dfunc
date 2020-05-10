@@ -1,3 +1,7 @@
+## 0.3.5
+- Added extensions
+- Added Coproduct up to Coproduct10
+
 ## 0.3.4
 - Updated README.
 
