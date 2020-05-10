@@ -32,22 +32,26 @@ class SealedGenerator extends Generator {
 
   String _generate(ClassElement base, List<ClassElement> elements) {
     final arity = elements.length;
-    if (arity > 5) {
+    if (arity > 10) {
       throw ArgumentError(
-          'Sealed classes with arity > 5 are not currently supported.');
+          'Sealed classes with arity > 10 are not currently supported.');
     }
     final generics = elements.map((e) => e.name).join(', ');
 
     final arguments = mapIndexed(
-      (int i, ClassElement el) => 'R Function(${el.name}) ifItem${i + 1}',
+      (int i, ClassElement el) => 'R Function(${el.name}) if${el.name}',
       elements,
     ).join(', ');
 
     final branches = mapIndexed(
       (int i, ClassElement el) =>
-          'if (this is ${el.name}) return ifItem${i + 1}(this);',
+          'if (this is ${el.name}) return if${el.name}(this as ${el.name});',
       elements,
     ).join('\n');
+
+    if (arity == 0) {
+      return '''mixin _\$${base.name} implements Coproduct0 {}''';
+    }
 
     return '''
 mixin _\$${base.name} implements Coproduct$arity<$generics> {
