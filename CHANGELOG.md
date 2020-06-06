@@ -1,3 +1,6 @@
+## 0.3.6
+- Added zip2 and zipWith functions
+
 ## 0.3.5
 - Added extensions
 - Added Coproduct up to Coproduct10

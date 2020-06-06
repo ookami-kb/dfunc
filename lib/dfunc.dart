@@ -25,3 +25,4 @@ export 'src/product/tuple.dart';
 export 'src/substring.dart';
 export 'src/sum.dart';
 export 'src/t.dart';
+export 'src/zip.dart';
