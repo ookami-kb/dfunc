@@ -1,4 +1,4 @@
-typedef Pipe<T, S> = S Function(T);
+import 'package:dfunc/src/func.dart';
 
 /// Performs left-to-right function composition.
 ///
@@ -6,7 +6,7 @@ typedef Pipe<T, S> = S Function(T);
 /// final pipe = pipe2(double.parse, (double v) => v.floor());
 /// pipe('123.456') // 123
 /// ```
-Pipe<S, U> pipe2<S, T, U>(Pipe<S, T> f1, Pipe<T, U> f2) =>
+Func1<S, U> pipe2<S, T, U>(Func1<S, T> f1, Func1<T, U> f2) =>
     (S value) => f2(f1(value));
 
 /// Performs left-to-right function composition.
@@ -19,5 +19,9 @@ Pipe<S, U> pipe2<S, T, U>(Pipe<S, T> f1, Pipe<T, U> f2) =>
 /// );
 /// pipe('123.456') // '123'
 /// ```
-Pipe<S, V> pipe3<S, T, U, V>(Pipe<S, T> f1, Pipe<T, U> f2, Pipe<U, V> f3) =>
+Func1<S, V> pipe3<S, T, U, V>(Func1<S, T> f1, Func1<T, U> f2, Func1<U, V> f3) =>
     (S value) => f3(f2(f1(value)));
+
+extension Pipe<A, B> on Func1<A, B> {
+  Func1<A, C> pipe<C>(Func1<B, C> f) => pipe2(this, f);
+}
