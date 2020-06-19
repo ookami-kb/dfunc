@@ -9,11 +9,11 @@ void main() {
 
   // Sealed classes generation:
 
-  final Base item = Item1((b) => b..text = 'TEST');
-  item.match((item) => print(item.text), (_) => print('2')); // prints TEST
+  final item = Base.item1((b) => b..text = 'TEST');
+  item.fold((item) => print(item.text), (_) => print('2')); // prints TEST
 
-  final State state = State2();
-  state.match(
+  final state = State.state2();
+  state.fold(
     (_) => print('1'),
     (_) => print('2'),
     (_) => print('3'),
@@ -27,19 +27,20 @@ void main() {
 
   // Either
 
-  final Either<Exception, String> either = Either.right('test');
+  final either = Either<Exception, String>.right('test');
   either.isRight() == true;
   either.map((s) => s.toUpperCase()).right == 'TEST';
 }
 
-@sealed
-abstract class Base with _$Base {
-  const Base._();
+class Base extends Coproduct2<Item1, Item2> {
+  Base.item1([Function(Item1Builder b) updates]) : super.item1(Item1(updates));
+
+  const Base.item2() : super.item2(const Item2());
 }
 
 /// Can be used together with built_value library to create
 /// immutable cases.
-abstract class Item1 with _$Base implements Built<Item1, Item1Builder>, Base {
+abstract class Item1 implements Built<Item1, Item1Builder> {
   factory Item1([Function(Item1Builder b) updates]) = _$Item1;
 
   Item1._();
@@ -47,23 +48,26 @@ abstract class Item1 with _$Base implements Built<Item1, Item1Builder>, Base {
   String get text;
 }
 
-class Item2 extends Base {
-  const Item2() : super._();
+class Item2 {
+  const Item2();
 }
 
-@sealed
-abstract class State with _$State {
-  const State._();
+class State extends Coproduct3<State1, State2, State3> {
+  const State.state1() : super.item1(const State1());
+
+  const State.state2() : super.item2(const State2());
+
+  const State.state3() : super.item3(const State3());
 }
 
-class State1 extends State {
-  const State1() : super._();
+class State1 {
+  const State1();
 }
 
-class State2 extends State {
-  const State2() : super._();
+class State2 {
+  const State2();
 }
 
-class State3 extends State {
-  const State3() : super._();
+class State3 {
+  const State3();
 }

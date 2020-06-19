@@ -24,11 +24,8 @@ abstract class Either<L, R> implements Coproduct2<L, R> {
 
   R get right;
 
-  T fold<T>(T Function(L) onLeft, T Function(R) onRight);
-
   @override
-  T match<T>(T Function(L) ifFirst, T Function(R) ifSecond) =>
-      fold(ifFirst, ifSecond);
+  T fold<T>(T Function(L) onLeft, T Function(R) onRight);
 
   Either<L, T> map<T>(T Function(R) f);
 
