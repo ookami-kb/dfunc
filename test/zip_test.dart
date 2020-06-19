@@ -8,9 +8,9 @@ void main() {
     expect(
       first.zipWith(second),
       [
-        Tuple2(1, 'a'),
-        Tuple2(2, 'b'),
-        Tuple2(3, 'c'),
+        Product2(1, 'a'),
+        Product2(2, 'b'),
+        Product2(3, 'c'),
       ],
     );
   });

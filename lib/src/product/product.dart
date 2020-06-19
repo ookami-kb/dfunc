@@ -1,6 +1,6 @@
 import 'package:quiver/core.dart';
 
-abstract class Product0 {
+class Product0 {
   const Product0();
 
   @override
@@ -8,26 +8,32 @@ abstract class Product0 {
 
   @override
   bool operator ==(other) => other is Product0;
+
+  @override
+  String toString() => [].toProductString();
 }
 
-abstract class Product1<T1> {
-  const Product1();
+class Product1<T1> {
+  const Product1(this.item1);
 
-  T1 get item1;
+  final T1 item1;
 
   @override
   int get hashCode => item1.hashCode;
 
   @override
   bool operator ==(other) => other is Product1 && other.item1 == item1;
+
+  @override
+  String toString() => [item1].toProductString();
 }
 
-abstract class Product2<T1, T2> {
-  const Product2();
+class Product2<T1, T2> {
+  const Product2(this.item1, this.item2);
 
-  T1 get item1;
+  final T1 item1;
 
-  T2 get item2;
+  final T2 item2;
 
   @override
   int get hashCode => hash2(item1, item2);
@@ -35,16 +41,19 @@ abstract class Product2<T1, T2> {
   @override
   bool operator ==(other) =>
       other is Product2 && other.item1 == item1 && other.item2 == item2;
+
+  @override
+  String toString() => [item1, item2].toProductString();
 }
 
-abstract class Product3<T1, T2, T3> {
-  const Product3();
+class Product3<T1, T2, T3> {
+  const Product3(this.item1, this.item2, this.item3);
 
-  T1 get item1;
+  final T1 item1;
 
-  T2 get item2;
+  final T2 item2;
 
-  T3 get item3;
+  final T3 item3;
 
   @override
   int get hashCode => hash3(item1, item2, item3);
@@ -55,18 +64,21 @@ abstract class Product3<T1, T2, T3> {
       other.item1 == item1 &&
       other.item2 == item2 &&
       other.item3 == item3;
+
+  @override
+  String toString() => [item1, item2, item3].toProductString();
 }
 
-abstract class Product4<T1, T2, T3, T4> {
-  const Product4();
+class Product4<T1, T2, T3, T4> {
+  const Product4(this.item1, this.item2, this.item3, this.item4);
 
-  T1 get item1;
+  final T1 item1;
 
-  T2 get item2;
+  final T2 item2;
 
-  T3 get item3;
+  final T3 item3;
 
-  T4 get item4;
+  final T4 item4;
 
   @override
   int get hashCode => hashObjects([item1, item2, item3, item4]);
@@ -78,20 +90,23 @@ abstract class Product4<T1, T2, T3, T4> {
       other.item2 == item2 &&
       other.item3 == item3 &&
       other.item4 == item4;
+
+  @override
+  String toString() => [item1, item2, item3, item4].toProductString();
 }
 
-abstract class Product5<T1, T2, T3, T4, T5> {
-  const Product5();
+class Product5<T1, T2, T3, T4, T5> {
+  const Product5(this.item1, this.item2, this.item3, this.item4, this.item5);
 
-  T1 get item1;
+  final T1 item1;
 
-  T2 get item2;
+  final T2 item2;
 
-  T3 get item3;
+  final T3 item3;
 
-  T4 get item4;
+  final T4 item4;
 
-  T5 get item5;
+  final T5 item5;
 
   @override
   int get hashCode => hashObjects([item1, item2, item3, item4, item5]);
@@ -104,4 +119,11 @@ abstract class Product5<T1, T2, T3, T4, T5> {
       other.item3 == item3 &&
       other.item4 == item4 &&
       other.item5 == item5;
+
+  @override
+  String toString() => [item1, item2, item3, item4, item5].toProductString();
+}
+
+extension on Iterable<Object> {
+  String toProductString() => '(${map((e) => e.toString()).join(', ')})';
 }

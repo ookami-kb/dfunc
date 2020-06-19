@@ -1,123 +1,189 @@
-abstract class Coproduct0 {
-  const Coproduct0();
+import 'package:quiver/core.dart';
+
+class Coproduct0 {
+  const Coproduct0.empty();
+
+  @override
+  int get hashCode => 0;
+
+  @override
+  bool operator ==(other) => other is Coproduct0;
 }
 
-abstract class Coproduct1<T1> {
-  const Coproduct1();
+class Coproduct1<T1> {
+  final T1 _value1;
 
-  R match<R>(R Function(T1) ifFirst);
+  const Coproduct1.item1(T1 value) : this._(value);
+
+  const Coproduct1._(this._value1) : assert(_value1 != null);
+
+  R fold<R>(R Function(T1) match1) => match1(_value1);
+
+  @override
+  int get hashCode => _value1.hashCode;
+
+  @override
+  bool operator ==(other) => other is Coproduct1 && other._value1 == _value1;
 }
 
-abstract class Coproduct2<T1, T2> {
-  const Coproduct2();
+class Coproduct2<T1, T2> {
+  const Coproduct2.item1(T1 value) : this._(value, null);
 
-  R match<R>(R Function(T1) ifFirst, R Function(T2) ifSecond);
+  const Coproduct2.item2(T2 value) : this._(null, value);
+
+  final T1 _value1;
+  final T2 _value2;
+
+  const Coproduct2._(this._value1, this._value2)
+      : assert(_value1 != null || _value2 != null);
+
+  R fold<R>(R Function(T1) match1, R Function(T2) match2) {
+    if (_value1 != null) return match1(_value1);
+    return match2(_value2);
+  }
+
+  @override
+  int get hashCode => hash2(_value1, _value2);
+
+  @override
+  bool operator ==(other) =>
+      other is Coproduct2 &&
+      other._value1 == _value1 &&
+      other._value2 == _value2;
 }
 
-abstract class Coproduct3<T1, T2, T3> {
-  const Coproduct3();
+class Coproduct3<T1, T2, T3> {
+  const Coproduct3.item1(T1 value) : this._(value, null, null);
 
-  R match<R>(
-    R Function(T1) ifFirst,
-    R Function(T2) ifSecond,
-    R Function(T3) ifThird,
-  );
+  const Coproduct3.item2(T2 value) : this._(null, value, null);
+
+  const Coproduct3.item3(T3 value) : this._(null, null, value);
+
+  final T1 _value1;
+  final T2 _value2;
+  final T3 _value3;
+
+  const Coproduct3._(this._value1, this._value2, this._value3)
+      : assert(_value1 != null || _value2 != null || _value3 != null);
+
+  R fold<R>(
+    R Function(T1) match1,
+    R Function(T2) match2,
+    R Function(T3) match3,
+  ) {
+    if (_value1 != null) return match1(_value1);
+    if (_value2 != null) match2(_value2);
+    return match3(_value3);
+  }
+
+  @override
+  int get hashCode => hash3(_value1, _value2, _value3);
+
+  @override
+  bool operator ==(other) =>
+      other is Coproduct3 &&
+      other._value1 == _value1 &&
+      other._value2 == _value2 &&
+      other._value3 == _value3;
 }
 
-abstract class Coproduct4<T1, T2, T3, T4> {
-  const Coproduct4();
+class Coproduct4<T1, T2, T3, T4> {
+  const Coproduct4.item1(T1 value) : this._(value, null, null, null);
 
-  R match<R>(
-    R Function(T1) ifFirst,
-    R Function(T2) ifSecond,
-    R Function(T3) ifThird,
-    R Function(T4) ifFourth,
-  );
+  const Coproduct4.item2(T2 value) : this._(null, value, null, null);
+
+  const Coproduct4.item3(T3 value) : this._(null, null, value, null);
+
+  const Coproduct4.item4(T4 value) : this._(null, null, null, value);
+
+  final T1 _value1;
+  final T2 _value2;
+  final T3 _value3;
+  final T4 _value4;
+
+  const Coproduct4._(this._value1, this._value2, this._value3, this._value4)
+      : assert(_value1 != null ||
+            _value2 != null ||
+            _value3 != null ||
+            _value4 != null);
+
+  R fold<R>(
+    R Function(T1) match1,
+    R Function(T2) match2,
+    R Function(T3) match3,
+    R Function(T4) match4,
+  ) {
+    if (_value1 != null) return match1(_value1);
+    if (_value2 != null) match2(_value2);
+    if (_value3 != null) match3(_value3);
+    return match4(_value4);
+  }
+
+  @override
+  int get hashCode => hashObjects([_value1, _value2, _value3, _value4]);
+
+  @override
+  bool operator ==(other) =>
+      other is Coproduct4 &&
+      other._value1 == _value1 &&
+      other._value2 == _value2 &&
+      other._value3 == _value3 &&
+      other._value4 == _value4;
 }
 
-abstract class Coproduct5<T1, T2, T3, T4, T5> {
-  const Coproduct5();
+class Coproduct5<T1, T2, T3, T4, T5> {
+  const Coproduct5.item1(T1 value) : this._(value, null, null, null, null);
 
-  R match<R>(
-    R Function(T1) ifFirst,
-    R Function(T2) ifSecond,
-    R Function(T3) ifThird,
-    R Function(T4) ifFourth,
-    R Function(T5) ifFifth,
-  );
-}
+  const Coproduct5.item2(T2 value) : this._(null, value, null, null, null);
 
-abstract class Coproduct6<T1, T2, T3, T4, T5, T6> {
-  const Coproduct6();
+  const Coproduct5.item3(T3 value) : this._(null, null, value, null, null);
 
-  R match<R>(
-    R Function(T1) ifFirst,
-    R Function(T2) ifSecond,
-    R Function(T3) ifThird,
-    R Function(T4) ifFourth,
-    R Function(T5) ifFifth,
-    R Function(T6) ifSixth,
-  );
-}
+  const Coproduct5.item4(T4 value) : this._(null, null, null, value, null);
 
-abstract class Coproduct7<T1, T2, T3, T4, T5, T6, T7> {
-  const Coproduct7();
+  const Coproduct5.item5(T5 value) : this._(null, null, null, null, value);
 
-  R match<R>(
-    R Function(T1) ifFirst,
-    R Function(T2) ifSecond,
-    R Function(T3) ifThird,
-    R Function(T4) ifFourth,
-    R Function(T5) ifFifth,
-    R Function(T6) ifSixth,
-    R Function(T7) ifSeventh,
-  );
-}
+  final T1 _value1;
+  final T2 _value2;
+  final T3 _value3;
+  final T4 _value4;
+  final T5 _value5;
 
-abstract class Coproduct8<T1, T2, T3, T4, T5, T6, T7, T8> {
-  const Coproduct8();
+  const Coproduct5._(
+    this._value1,
+    this._value2,
+    this._value3,
+    this._value4,
+    this._value5,
+  ) : assert(_value1 != null ||
+            _value2 != null ||
+            _value3 != null ||
+            _value4 != null ||
+            _value5 != null);
 
-  R match<R>(
-    R Function(T1) ifFirst,
-    R Function(T2) ifSecond,
-    R Function(T3) ifThird,
-    R Function(T4) ifFourth,
-    R Function(T5) ifFifth,
-    R Function(T6) ifSixth,
-    R Function(T7) ifSeventh,
-    R Function(T8) ifEighth,
-  );
-}
+  R fold<R>(
+    R Function(T1) match1,
+    R Function(T2) match2,
+    R Function(T3) match3,
+    R Function(T4) match4,
+    R Function(T5) match5,
+  ) {
+    if (_value1 != null) return match1(_value1);
+    if (_value2 != null) match2(_value2);
+    if (_value3 != null) match3(_value3);
+    if (_value4 != null) match4(_value4);
+    return match5(_value5);
+  }
 
-abstract class Coproduct9<T1, T2, T3, T4, T5, T6, T7, T8, T9> {
-  const Coproduct9();
+  @override
+  int get hashCode =>
+      hashObjects([_value1, _value2, _value3, _value4, _value5]);
 
-  R match<R>(
-    R Function(T1) ifFirst,
-    R Function(T2) ifSecond,
-    R Function(T3) ifThird,
-    R Function(T4) ifFourth,
-    R Function(T5) ifFifth,
-    R Function(T6) ifSixth,
-    R Function(T7) ifSeventh,
-    R Function(T8) ifEighth,
-    R Function(T9) ifNinth,
-  );
-}
-
-abstract class Coproduct10<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> {
-  const Coproduct10();
-
-  R match<R>(
-    R Function(T1) ifFirst,
-    R Function(T2) ifSecond,
-    R Function(T3) ifThird,
-    R Function(T4) ifFourth,
-    R Function(T5) ifFifth,
-    R Function(T6) ifSixth,
-    R Function(T7) ifSeventh,
-    R Function(T8) ifEighth,
-    R Function(T9) ifNinth,
-    R Function(T10) ifTenth,
-  );
+  @override
+  bool operator ==(other) =>
+      other is Coproduct5 &&
+      other._value1 == _value1 &&
+      other._value2 == _value2 &&
+      other._value3 == _value3 &&
+      other._value4 == _value4 &&
+      other._value5 == _value5;
 }
