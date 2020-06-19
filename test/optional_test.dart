@@ -17,11 +17,6 @@ void main() {
     expect(optional.getOrNull(), null);
   });
 
-  test('get() throws for empty Optional', () {
-    final optional = Optional.of(null);
-    expect(() => optional.get(), throwsA(TypeMatcher<StateError>()));
-  });
-
   test('getOrElse() returns callback result for empty Optional', () {
     final optional = Optional<String>.of(null);
     expect(optional.getOrElse(() => 'orElse'), 'orElse');
@@ -30,11 +25,6 @@ void main() {
   test('getOrNull() returns value for non-empty Optional', () {
     final optional = Optional.of('test');
     expect(optional.getOrNull(), 'test');
-  });
-
-  test('get() returns value for non-empty Optional', () {
-    final optional = Optional.of('test');
-    expect(optional.get(), 'test');
   });
 
   test('getOrElse() returns value for non-empty Optional', () {
@@ -49,7 +39,7 @@ void main() {
 
   test('map() works for non-empty Optional', () {
     final optional = Optional<String>.of('123');
-    expect(optional.map(int.parse).get(), 123);
+    expect(optional.map(int.parse), some(123));
   });
 
   test('flatMap() works for empty Optional', () {
@@ -59,7 +49,7 @@ void main() {
 
   test('flatMap() works for non-empty Optional', () {
     final optional = Optional<String>.of('123');
-    expect(optional.flatMap((v) => Optional.of(int.parse(v))).get(), 123);
+    expect(optional.flatMap((v) => Optional.of(int.parse(v))), some(123));
   });
 
   group('mapAsync()', () {
@@ -74,7 +64,7 @@ void main() {
     test('works for non-empty Optional', () async {
       final optional = Optional<String>.of('123');
       final result = await optional.mapAsync(map);
-      expect(result.get(), 123);
+      expect(result, some(123));
     });
   });
 
@@ -90,7 +80,7 @@ void main() {
     test('works for non-empty Optional', () async {
       final optional = Optional<String>.of('123');
       final result = await optional.flatMapAsync(map);
-      expect(result.get(), 123);
+      expect(result, some(123));
     });
   });
 
@@ -104,7 +94,7 @@ void main() {
 
     test('works for non-empty Optional', () async {
       final optional = await create('123').mapAsync(int.parse);
-      expect(optional.get(), 123);
+      expect(optional, some(123));
     });
   });
 
@@ -119,7 +109,7 @@ void main() {
 
     test('works for non-empty Optional', () async {
       final optional = await create('123').flatMapAsync(map);
-      expect(optional.get(), 123);
+      expect(optional, some(123));
     });
   });
 
@@ -130,8 +120,8 @@ void main() {
     });
 
     test('creates non-empty Optional', () {
-      final String value = 'test';
-      expect(value.toOptional().get(), 'test');
+      final value = 'test';
+      expect(value.toOptional(), some('test'));
     });
   });
 
