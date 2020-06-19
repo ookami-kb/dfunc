@@ -8,6 +8,9 @@ class Coproduct0 {
 
   @override
   bool operator ==(other) => other is Coproduct0;
+
+  @override
+  String toString() => [].toCoProductString();
 }
 
 class Coproduct1<T1> {
@@ -24,6 +27,9 @@ class Coproduct1<T1> {
 
   @override
   bool operator ==(other) => other is Coproduct1 && other._value1 == _value1;
+
+  @override
+  String toString() => [_value1].toCoProductString();
 }
 
 class Coproduct2<T1, T2> {
@@ -50,6 +56,9 @@ class Coproduct2<T1, T2> {
       other is Coproduct2 &&
       other._value1 == _value1 &&
       other._value2 == _value2;
+
+  @override
+  String toString() => [_value1, _value2].toCoProductString();
 }
 
 class Coproduct3<T1, T2, T3> {
@@ -85,6 +94,9 @@ class Coproduct3<T1, T2, T3> {
       other._value1 == _value1 &&
       other._value2 == _value2 &&
       other._value3 == _value3;
+
+  @override
+  String toString() => [_value1, _value2, _value3].toCoProductString();
 }
 
 class Coproduct4<T1, T2, T3, T4> {
@@ -129,6 +141,9 @@ class Coproduct4<T1, T2, T3, T4> {
       other._value2 == _value2 &&
       other._value3 == _value3 &&
       other._value4 == _value4;
+
+  @override
+  String toString() => [_value1, _value2, _value3, _value4].toCoProductString();
 }
 
 class Coproduct5<T1, T2, T3, T4, T5> {
@@ -186,4 +201,13 @@ class Coproduct5<T1, T2, T3, T4, T5> {
       other._value3 == _value3 &&
       other._value4 == _value4 &&
       other._value5 == _value5;
+
+  @override
+  String toString() =>
+      [_value1, _value2, _value3, _value4, _value5].toCoProductString();
+}
+
+extension on Iterable<Object> {
+  String toCoProductString() =>
+      '(${firstWhere((e) => e != null, orElse: () => '').toString()})';
 }

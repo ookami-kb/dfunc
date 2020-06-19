@@ -1,3 +1,6 @@
+## 0.4.1
+- Added CoProduct::toString
+
 ## 0.4.0
 - Simplified API, removed sealed. A lot of breaking changes!
 
