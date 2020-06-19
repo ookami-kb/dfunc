@@ -88,34 +88,34 @@ void main() {
   });
 
   test('joins Future<Either>', () async {
-    final Future<Either<bool, bool>> either = Future.value(Either.right(true));
+    final either = Future<Either<bool, bool>>.value(Either.right(true));
     final value = await either.join();
     expect(value, true);
   });
 
   group('combines 2 eithers', () {
     test('returns left if first is left', () {
-      final Either<String, int> e1 = Either.left('left');
-      final Either<String, double> e2 = Either.right(1.0);
+      final e1 = Either<String, int>.left('left');
+      final e2 = Either<String, double>.right(1.0);
       final result = e1.combine(e2);
 
       expect(result.left, 'left');
     });
 
     test('returns left if second is left', () {
-      final Either<String, int> e1 = Either.right(1);
-      final Either<String, double> e2 = Either.left('left');
+      final e1 = Either<String, int>.right(1);
+      final e2 = Either<String, double>.left('left');
       final result = e1.combine(e2);
 
       expect(result.left, 'left');
     });
 
     test('returns right if both are right', () {
-      final Either<String, int> e1 = Either.right(1);
-      final Either<String, double> e2 = Either.right(1.0);
+      final e1 = Either<String, int>.right(1);
+      final e2 = Either<String, double>.right(1.0);
       final result = e1.combine(e2);
 
-      expect(result.right, Tuple2(1, 1.0));
+      expect(result.right, Product2(1, 1.0));
     });
   });
 }

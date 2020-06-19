@@ -35,7 +35,7 @@ abstract class Either<L, R> implements Coproduct2<L, R> {
       ? Either.left(left)
       : other.isLeft()
           ? Either.left(other.left)
-          : Either.right(Tuple2(right, other.right));
+          : Either.right(Product2(right, other.right));
 }
 
 class _Left<L, R> extends Either<L, R> {
