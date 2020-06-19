@@ -1,3 +1,6 @@
+## 0.4.0
+- Simplified API, removed sealed. A lot of breaking changes!
+
 ## 0.3.6
 - Added zip2 and zipWith functions
 

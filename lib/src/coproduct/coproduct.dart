@@ -17,7 +17,7 @@ class Coproduct1<T1> {
 
   const Coproduct1._(this._value1) : assert(_value1 != null);
 
-  R fold<R>(R Function(T1) ifFirst) => ifFirst(_value1);
+  R fold<R>(R Function(T1) match1) => match1(_value1);
 
   @override
   int get hashCode => _value1.hashCode;
@@ -37,9 +37,9 @@ class Coproduct2<T1, T2> {
   const Coproduct2._(this._value1, this._value2)
       : assert(_value1 != null || _value2 != null);
 
-  R fold<R>(R Function(T1) ifFirst, R Function(T2) ifSecond) {
-    if (_value1 != null) return ifFirst(_value1);
-    return ifSecond(_value2);
+  R fold<R>(R Function(T1) match1, R Function(T2) match2) {
+    if (_value1 != null) return match1(_value1);
+    return match2(_value2);
   }
 
   @override
@@ -67,13 +67,13 @@ class Coproduct3<T1, T2, T3> {
       : assert(_value1 != null || _value2 != null || _value3 != null);
 
   R fold<R>(
-    R Function(T1) ifFirst,
-    R Function(T2) ifSecond,
-    R Function(T3) ifThird,
+    R Function(T1) match1,
+    R Function(T2) match2,
+    R Function(T3) match3,
   ) {
-    if (_value1 != null) return ifFirst(_value1);
-    if (_value2 != null) ifSecond(_value2);
-    return ifThird(_value3);
+    if (_value1 != null) return match1(_value1);
+    if (_value2 != null) match2(_value2);
+    return match3(_value3);
   }
 
   @override
@@ -108,15 +108,15 @@ class Coproduct4<T1, T2, T3, T4> {
             _value4 != null);
 
   R fold<R>(
-    R Function(T1) ifFirst,
-    R Function(T2) ifSecond,
-    R Function(T3) ifThird,
-    R Function(T4) ifFourth,
+    R Function(T1) match1,
+    R Function(T2) match2,
+    R Function(T3) match3,
+    R Function(T4) match4,
   ) {
-    if (_value1 != null) return ifFirst(_value1);
-    if (_value2 != null) ifSecond(_value2);
-    if (_value3 != null) ifThird(_value3);
-    return ifFourth(_value4);
+    if (_value1 != null) return match1(_value1);
+    if (_value2 != null) match2(_value2);
+    if (_value3 != null) match3(_value3);
+    return match4(_value4);
   }
 
   @override
@@ -161,17 +161,17 @@ class Coproduct5<T1, T2, T3, T4, T5> {
             _value5 != null);
 
   R fold<R>(
-    R Function(T1) ifFirst,
-    R Function(T2) ifSecond,
-    R Function(T3) ifThird,
-    R Function(T4) ifFourth,
-    R Function(T5) ifFifth,
+    R Function(T1) match1,
+    R Function(T2) match2,
+    R Function(T3) match3,
+    R Function(T4) match4,
+    R Function(T5) match5,
   ) {
-    if (_value1 != null) return ifFirst(_value1);
-    if (_value2 != null) ifSecond(_value2);
-    if (_value3 != null) ifThird(_value3);
-    if (_value4 != null) ifFourth(_value4);
-    return ifFifth(_value5);
+    if (_value1 != null) return match1(_value1);
+    if (_value2 != null) match2(_value2);
+    if (_value3 != null) match3(_value3);
+    if (_value4 != null) match4(_value4);
+    return match5(_value5);
   }
 
   @override

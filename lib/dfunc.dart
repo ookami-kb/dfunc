@@ -9,6 +9,7 @@ export 'src/either/eithers.dart';
 export 'src/either/extensions.dart';
 export 'src/f.dart';
 export 'src/func.dart';
+export 'src/func/func.dart';
 export 'src/identity.dart';
 export 'src/if_not_null.dart';
 export 'src/ignore.dart';

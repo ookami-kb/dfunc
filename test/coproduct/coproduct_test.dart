@@ -1,5 +1,4 @@
 import 'package:dfunc/dfunc.dart';
-import 'package:dfunc/src/coproduct/coproduct.dart';
 import 'package:test/test.dart';
 
 void main() {
