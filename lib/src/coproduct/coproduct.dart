@@ -81,7 +81,7 @@ class Coproduct3<T1, T2, T3> {
     R Function(T3) match3,
   ) {
     if (_value1 != null) return match1(_value1);
-    if (_value2 != null) match2(_value2);
+    if (_value2 != null) return match2(_value2);
     return match3(_value3);
   }
 
@@ -126,8 +126,8 @@ class Coproduct4<T1, T2, T3, T4> {
     R Function(T4) match4,
   ) {
     if (_value1 != null) return match1(_value1);
-    if (_value2 != null) match2(_value2);
-    if (_value3 != null) match3(_value3);
+    if (_value2 != null) return match2(_value2);
+    if (_value3 != null) return match3(_value3);
     return match4(_value4);
   }
 
@@ -183,9 +183,9 @@ class Coproduct5<T1, T2, T3, T4, T5> {
     R Function(T5) match5,
   ) {
     if (_value1 != null) return match1(_value1);
-    if (_value2 != null) match2(_value2);
-    if (_value3 != null) match3(_value3);
-    if (_value4 != null) match4(_value4);
+    if (_value2 != null) return match2(_value2);
+    if (_value3 != null) return match3(_value3);
+    if (_value4 != null) return match4(_value4);
     return match5(_value5);
   }
 
@@ -256,10 +256,10 @@ class Coproduct6<T1, T2, T3, T4, T5, T6> {
     R Function(T6) match6,
   ) {
     if (_value1 != null) return match1(_value1);
-    if (_value2 != null) match2(_value2);
-    if (_value3 != null) match3(_value3);
-    if (_value4 != null) match4(_value4);
-    if (_value5 != null) match5(_value5);
+    if (_value2 != null) return match2(_value2);
+    if (_value3 != null) return match3(_value3);
+    if (_value4 != null) return match4(_value4);
+    if (_value5 != null) return match5(_value5);
     return match6(_value6);
   }
 

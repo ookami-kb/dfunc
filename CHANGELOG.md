@@ -1,3 +1,6 @@
+## 0.4.2+1
+- Fixed Coproduct::fold
+
 ## 0.4.2
 - Added Coproduct6
 
