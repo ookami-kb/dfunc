@@ -207,6 +207,81 @@ class Coproduct5<T1, T2, T3, T4, T5> {
       [_value1, _value2, _value3, _value4, _value5].toCoProductString();
 }
 
+class Coproduct6<T1, T2, T3, T4, T5, T6> {
+  const Coproduct6.item1(T1 value)
+      : this._(value, null, null, null, null, null);
+
+  const Coproduct6.item2(T2 value)
+      : this._(null, value, null, null, null, null);
+
+  const Coproduct6.item3(T3 value)
+      : this._(null, null, value, null, null, null);
+
+  const Coproduct6.item4(T4 value)
+      : this._(null, null, null, value, null, null);
+
+  const Coproduct6.item5(T5 value)
+      : this._(null, null, null, null, value, null);
+
+  const Coproduct6.item6(T6 value)
+      : this._(null, null, null, null, null, value);
+
+  final T1 _value1;
+  final T2 _value2;
+  final T3 _value3;
+  final T4 _value4;
+  final T5 _value5;
+  final T6 _value6;
+
+  const Coproduct6._(
+    this._value1,
+    this._value2,
+    this._value3,
+    this._value4,
+    this._value5,
+    this._value6,
+  ) : assert(_value1 != null ||
+            _value2 != null ||
+            _value3 != null ||
+            _value4 != null ||
+            _value5 != null ||
+            _value6 != null);
+
+  R fold<R>(
+    R Function(T1) match1,
+    R Function(T2) match2,
+    R Function(T3) match3,
+    R Function(T4) match4,
+    R Function(T5) match5,
+    R Function(T6) match6,
+  ) {
+    if (_value1 != null) return match1(_value1);
+    if (_value2 != null) match2(_value2);
+    if (_value3 != null) match3(_value3);
+    if (_value4 != null) match4(_value4);
+    if (_value5 != null) match5(_value5);
+    return match6(_value6);
+  }
+
+  @override
+  int get hashCode =>
+      hashObjects([_value1, _value2, _value3, _value4, _value5, _value6]);
+
+  @override
+  bool operator ==(other) =>
+      other is Coproduct6 &&
+      other._value1 == _value1 &&
+      other._value2 == _value2 &&
+      other._value3 == _value3 &&
+      other._value4 == _value4 &&
+      other._value5 == _value5 &&
+      other._value6 == _value6;
+
+  @override
+  String toString() => [_value1, _value2, _value3, _value4, _value5, _value6]
+      .toCoProductString();
+}
+
 extension on Iterable<Object> {
   String toCoProductString() =>
       '(${firstWhere((e) => e != null, orElse: () => '').toString()})';
