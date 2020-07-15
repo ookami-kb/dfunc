@@ -1,3 +1,7 @@
+## 0.4.3
+- Added partial application and currying
+- Added Coproduct up to 10
+
 ## 0.4.2+1
 - Fixed Coproduct::fold
 
