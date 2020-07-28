@@ -794,7 +794,7 @@ class Coproduct10<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> {
       ].toCoproductString();
 }
 
-extension on Iterable<Object> {
+extension<T> on Iterable<T> {
   String toCoproductString() =>
-      '(${firstWhere((e) => e != null, orElse: () => '').toString()})';
+      '(${firstWhere((e) => e != null, orElse: () => null)?.toString() ?? ''})';
 }

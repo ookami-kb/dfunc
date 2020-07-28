@@ -1,3 +1,6 @@
+## 0.4.4
+- Fixed `toCoproductString` method
+
 ## 0.4.3
 - Added partial application and currying
 - Added Coproduct up to 10
