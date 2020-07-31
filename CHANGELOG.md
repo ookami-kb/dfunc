@@ -1,3 +1,6 @@
+## 0.4.5
+- Added groupBy function
+
 ## 0.4.4
 - Fixed `toCoproductString` method
 
