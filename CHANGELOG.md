@@ -1,3 +1,6 @@
+## 0.4.6
+- Added `let` and `also` functions.
+
 ## 0.4.5
 - Added groupBy function
 

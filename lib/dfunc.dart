@@ -25,6 +25,7 @@ export 'src/optional/extensions.dart';
 export 'src/optional/optional.dart';
 export 'src/pipe.dart';
 export 'src/product/product.dart';
+export 'src/scope.dart';
 export 'src/substring.dart';
 export 'src/sum.dart';
 export 'src/t.dart';
