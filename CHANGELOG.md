@@ -1,3 +1,7 @@
+## 0.4.7
+- Added `Future<Optional<T>>::foldAsync`, `Stream<Optional<T>>::mapFold`
+- Added `Stream<Either<L, R>>::mapFold`
+
 ## 0.4.6
 - Added `let` and `also` functions.
 

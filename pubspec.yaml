@@ -1,6 +1,6 @@
 name: dfunc
 description: Functional batteries for Dart. Implementation of Either, Optional etc.
-version: 0.4.6
+version: 0.4.7
 homepage: https://github.com/ookami-kb/dfunc
 
 environment:

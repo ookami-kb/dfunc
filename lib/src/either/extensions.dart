@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:dfunc/src/either/either.dart';
+import 'package:dfunc/src/func.dart';
 import 'package:dfunc/src/identity.dart';
 
 extension EitherAsync<L, R> on Either<L, R> {
@@ -33,10 +34,7 @@ extension FutureEitherExtension<L, R> on Future<Either<L, R>> {
     return either.isLeft() ? Either.left(either.left) : await f(either.right);
   }
 
-  Future<T> foldAsync<T>(
-    FutureOr<T> Function(L) onLeft,
-    FutureOr<T> Function(R) onRight,
-  ) =>
+  Future<T> foldAsync<T>(Func1<L, T> onLeft, Func1<R, T> onRight) =>
       then((v) => v.fold(onLeft, onRight));
 }
 
@@ -45,4 +43,9 @@ extension SameEitherExtension<T> on FutureOr<Either<T, T>> {
     final x = await this;
     return x.fold(identity, identity);
   }
+}
+
+extension MapFoldStreamEither<L, R> on Stream<Either<L, R>> {
+  Stream<S> mapFold<S>(Func1<L, S> onLeft, Func1<R, S> onRight) =>
+      map((s) => s.fold(onLeft, onRight));
 }
