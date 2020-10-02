@@ -1,3 +1,6 @@
+## 0.6.0-nullsafety.1
+- Enabled null safety
+
 ## 0.5.0
 - Migrated to Dart 1.10 and enabled NNBD
 - Added `traverse` functions
