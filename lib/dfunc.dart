@@ -14,7 +14,6 @@ export 'src/func/func.dart';
 export 'src/func/partial.dart';
 export 'src/group_by.dart';
 export 'src/identity.dart';
-export 'src/if_not_null.dart';
 export 'src/ignore.dart';
 export 'src/is_empty.dart';
 export 'src/limit.dart';

@@ -12,7 +12,7 @@ import 'dart:math';
 /// string.substring(1, 4); // 'art'
 /// string.substring(1, 40); // 'artlang'
 /// ```
-String substring(String str, int startIndex, [int endIndex]) =>
+String substring(String? str, int startIndex, [int? endIndex]) =>
     (str == null || str.isEmpty)
         ? ''
         : str.substring(

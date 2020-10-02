@@ -6,7 +6,7 @@ import 'package:dfunc/src/identity.dart';
 
 extension EitherAsync<L, R> on Either<L, R> {
   Future<Either<L, T>> mapAsync<T>(FutureOr<T> Function(R) f) async =>
-      isLeft() ? Either.left(left) : Either.right(f(right));
+      isLeft() ? Either.left(left) : Either.right(await f(right));
 
   Future<Either<L, T>> flatMapAsync<T>(FutureOr<Either<L, T>> Function(R) f) async =>
       isLeft() ? Either.left(left) : f(right);

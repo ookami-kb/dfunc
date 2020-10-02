@@ -13,7 +13,7 @@ extension TraversableIterable<A> on Iterable<A> {
   }
 
   Future<Iterable<B>> traverseFuture<B>(FutureOr<B> Function(A) f) =>
-      Future.wait(map(f));
+      Future.wait(map((a) async => await f(a)));
 }
 
 extension IterableOptionalSequence<A> on Iterable<Optional<A>> {

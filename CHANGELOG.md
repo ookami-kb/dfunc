@@ -1,3 +1,8 @@
+## 0.5.0
+- Migrated to Dart 1.10 and enabled NNBD
+- Added `traverse` functions
+- Removed `ifNotNull` (use `let` instead)
+
 ## 0.4.7
 - Added `Future<Optional<T>>::foldAsync`, `Stream<Optional<T>>::mapFold`
 - Added `Stream<Either<L, R>>::mapFold`
