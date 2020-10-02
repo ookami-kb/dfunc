@@ -1,3 +1,6 @@
+## 0.5.1
+- Switched off NNBD for 0.5
+
 ## 0.5.0
 - Migrated to Dart 1.10 and enabled NNBD
 - Added `traverse` functions

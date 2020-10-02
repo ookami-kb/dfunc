@@ -10,5 +10,5 @@ import 'package:dfunc/dfunc.dart';
 /// final limit3 = limit(3);
 /// limit3('Test') // 'Tes'
 /// ```
-String Function(String?) limit(int maxLength) =>
-    (String? s) => substring(s, 0, maxLength);
+String Function(String) limit(int maxLength) =>
+    (String s) => substring(s, 0, maxLength);

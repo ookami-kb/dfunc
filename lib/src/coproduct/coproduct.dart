@@ -38,8 +38,8 @@ class Coproduct2<T1, T2> {
 
   const Coproduct2.item2(T2 value) : this._(null, value, 1);
 
-  final T1? _value1;
-  final T2? _value2;
+  final T1 _value1;
+  final T2 _value2;
   final int _discriminator;
 
   const Coproduct2._(this._value1, this._value2, this._discriminator);
@@ -47,9 +47,9 @@ class Coproduct2<T1, T2> {
   R fold<R>(R Function(T1) match1, R Function(T2) match2) {
     switch (_discriminator) {
       case 0:
-        return match1(_value1!);
+        return match1(_value1);
       default:
-        return match2(_value2!);
+        return match2(_value2);
     }
   }
 
@@ -73,9 +73,9 @@ class Coproduct3<T1, T2, T3> {
 
   const Coproduct3.item3(T3 value) : this._(null, null, value, 2);
 
-  final T1? _value1;
-  final T2? _value2;
-  final T3? _value3;
+  final T1 _value1;
+  final T2 _value2;
+  final T3 _value3;
   final int _discriminator;
 
   const Coproduct3._(
@@ -92,11 +92,11 @@ class Coproduct3<T1, T2, T3> {
   ) {
     switch (_discriminator) {
       case 0:
-        return match1(_value1!);
+        return match1(_value1);
       case 1:
-        return match2(_value2!);
+        return match2(_value2);
       default:
-        return match3(_value3!);
+        return match3(_value3);
     }
   }
 
@@ -123,10 +123,10 @@ class Coproduct4<T1, T2, T3, T4> {
 
   const Coproduct4.item4(T4 value) : this._(null, null, null, value, 3);
 
-  final T1? _value1;
-  final T2? _value2;
-  final T3? _value3;
-  final T4? _value4;
+  final T1 _value1;
+  final T2 _value2;
+  final T3 _value3;
+  final T4 _value4;
   final int _discriminator;
 
   const Coproduct4._(
@@ -145,13 +145,13 @@ class Coproduct4<T1, T2, T3, T4> {
   ) {
     switch (_discriminator) {
       case 0:
-        return match1(_value1!);
+        return match1(_value1);
       case 1:
-        return match2(_value2!);
+        return match2(_value2);
       case 2:
-        return match3(_value3!);
+        return match3(_value3);
       default:
-        return match4(_value4!);
+        return match4(_value4);
     }
   }
 
@@ -181,11 +181,11 @@ class Coproduct5<T1, T2, T3, T4, T5> {
 
   const Coproduct5.item5(T5 value) : this._(null, null, null, null, value, 4);
 
-  final T1? _value1;
-  final T2? _value2;
-  final T3? _value3;
-  final T4? _value4;
-  final T5? _value5;
+  final T1 _value1;
+  final T2 _value2;
+  final T3 _value3;
+  final T4 _value4;
+  final T5 _value5;
   final int _discriminator;
 
   const Coproduct5._(
@@ -206,15 +206,15 @@ class Coproduct5<T1, T2, T3, T4, T5> {
   ) {
     switch (_discriminator) {
       case 0:
-        return match1(_value1!);
+        return match1(_value1);
       case 1:
-        return match2(_value2!);
+        return match2(_value2);
       case 2:
-        return match3(_value3!);
+        return match3(_value3);
       case 3:
-        return match4(_value4!);
+        return match4(_value4);
       default:
-        return match5(_value5!);
+        return match5(_value5);
     }
   }
 
@@ -255,12 +255,12 @@ class Coproduct6<T1, T2, T3, T4, T5, T6> {
   const Coproduct6.item6(T6 value)
       : this._(null, null, null, null, null, value, 5);
 
-  final T1? _value1;
-  final T2? _value2;
-  final T3? _value3;
-  final T4? _value4;
-  final T5? _value5;
-  final T6? _value6;
+  final T1 _value1;
+  final T2 _value2;
+  final T3 _value3;
+  final T4 _value4;
+  final T5 _value5;
+  final T6 _value6;
   final int _discriminator;
 
   const Coproduct6._(
@@ -283,17 +283,17 @@ class Coproduct6<T1, T2, T3, T4, T5, T6> {
   ) {
     switch (_discriminator) {
       case 0:
-        return match1(_value1!);
+        return match1(_value1);
       case 1:
-        return match2(_value2!);
+        return match2(_value2);
       case 2:
-        return match3(_value3!);
+        return match3(_value3);
       case 3:
-        return match4(_value4!);
+        return match4(_value4);
       case 4:
-        return match5(_value5!);
+        return match5(_value5);
       default:
-        return match6(_value6!);
+        return match6(_value6);
     }
   }
 
@@ -338,13 +338,13 @@ class Coproduct7<T1, T2, T3, T4, T5, T6, T7> {
   const Coproduct7.item7(T7 value)
       : this._(null, null, null, null, null, null, value, 6);
 
-  final T1? _value1;
-  final T2? _value2;
-  final T3? _value3;
-  final T4? _value4;
-  final T5? _value5;
-  final T6? _value6;
-  final T7? _value7;
+  final T1 _value1;
+  final T2 _value2;
+  final T3 _value3;
+  final T4 _value4;
+  final T5 _value5;
+  final T6 _value6;
+  final T7 _value7;
   final int _discriminator;
 
   const Coproduct7._(
@@ -369,19 +369,19 @@ class Coproduct7<T1, T2, T3, T4, T5, T6, T7> {
   ) {
     switch (_discriminator) {
       case 0:
-        return match1(_value1!);
+        return match1(_value1);
       case 1:
-        return match2(_value2!);
+        return match2(_value2);
       case 2:
-        return match3(_value3!);
+        return match3(_value3);
       case 3:
-        return match4(_value4!);
+        return match4(_value4);
       case 4:
-        return match5(_value5!);
+        return match5(_value5);
       case 5:
-        return match6(_value6!);
+        return match6(_value6);
       default:
-        return match7(_value7!);
+        return match7(_value7);
     }
   }
 
@@ -444,14 +444,14 @@ class Coproduct8<T1, T2, T3, T4, T5, T6, T7, T8> {
   const Coproduct8.item8(T8 value)
       : this._(null, null, null, null, null, null, null, value, 7);
 
-  final T1? _value1;
-  final T2? _value2;
-  final T3? _value3;
-  final T4? _value4;
-  final T5? _value5;
-  final T6? _value6;
-  final T7? _value7;
-  final T8? _value8;
+  final T1 _value1;
+  final T2 _value2;
+  final T3 _value3;
+  final T4 _value4;
+  final T5 _value5;
+  final T6 _value6;
+  final T7 _value7;
+  final T8 _value8;
   final int _discriminator;
 
   const Coproduct8._(
@@ -478,21 +478,21 @@ class Coproduct8<T1, T2, T3, T4, T5, T6, T7, T8> {
   ) {
     switch (_discriminator) {
       case 0:
-        return match1(_value1!);
+        return match1(_value1);
       case 1:
-        return match2(_value2!);
+        return match2(_value2);
       case 2:
-        return match3(_value3!);
+        return match3(_value3);
       case 3:
-        return match4(_value4!);
+        return match4(_value4);
       case 4:
-        return match5(_value5!);
+        return match5(_value5);
       case 5:
-        return match6(_value6!);
+        return match6(_value6);
       case 6:
-        return match7(_value7!);
+        return match7(_value7);
       default:
-        return match8(_value8!);
+        return match8(_value8);
     }
   }
 
@@ -561,15 +561,15 @@ class Coproduct9<T1, T2, T3, T4, T5, T6, T7, T8, T9> {
   const Coproduct9.item9(T9 value)
       : this._(null, null, null, null, null, null, null, null, value, 8);
 
-  final T1? _value1;
-  final T2? _value2;
-  final T3? _value3;
-  final T4? _value4;
-  final T5? _value5;
-  final T6? _value6;
-  final T7? _value7;
-  final T8? _value8;
-  final T9? _value9;
+  final T1 _value1;
+  final T2 _value2;
+  final T3 _value3;
+  final T4 _value4;
+  final T5 _value5;
+  final T6 _value6;
+  final T7 _value7;
+  final T8 _value8;
+  final T9 _value9;
   final int _discriminator;
 
   const Coproduct9._(
@@ -598,23 +598,23 @@ class Coproduct9<T1, T2, T3, T4, T5, T6, T7, T8, T9> {
   ) {
     switch (_discriminator) {
       case 0:
-        return match1(_value1!);
+        return match1(_value1);
       case 1:
-        return match2(_value2!);
+        return match2(_value2);
       case 2:
-        return match3(_value3!);
+        return match3(_value3);
       case 3:
-        return match4(_value4!);
+        return match4(_value4);
       case 4:
-        return match5(_value5!);
+        return match5(_value5);
       case 5:
-        return match6(_value6!);
+        return match6(_value6);
       case 6:
-        return match7(_value7!);
+        return match7(_value7);
       case 7:
-        return match8(_value8!);
+        return match8(_value8);
       default:
-        return match9(_value9!);
+        return match9(_value9);
     }
   }
 
@@ -689,16 +689,16 @@ class Coproduct10<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> {
   const Coproduct10.item10(T10 value)
       : this._(null, null, null, null, null, null, null, null, null, value, 8);
 
-  final T1? _value1;
-  final T2? _value2;
-  final T3? _value3;
-  final T4? _value4;
-  final T5? _value5;
-  final T6? _value6;
-  final T7? _value7;
-  final T8? _value8;
-  final T9? _value9;
-  final T10? _value10;
+  final T1 _value1;
+  final T2 _value2;
+  final T3 _value3;
+  final T4 _value4;
+  final T5 _value5;
+  final T6 _value6;
+  final T7 _value7;
+  final T8 _value8;
+  final T9 _value9;
+  final T10 _value10;
   final int _discriminator;
 
   const Coproduct10._(
@@ -729,25 +729,25 @@ class Coproduct10<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> {
   ) {
     switch (_discriminator) {
       case 0:
-        return match1(_value1!);
+        return match1(_value1);
       case 1:
-        return match2(_value2!);
+        return match2(_value2);
       case 2:
-        return match3(_value3!);
+        return match3(_value3);
       case 3:
-        return match4(_value4!);
+        return match4(_value4);
       case 4:
-        return match5(_value5!);
+        return match5(_value5);
       case 5:
-        return match6(_value6!);
+        return match6(_value6);
       case 6:
-        return match7(_value7!);
+        return match7(_value7);
       case 7:
-        return match8(_value8!);
+        return match8(_value8);
       case 8:
-        return match9(_value9!);
+        return match9(_value9);
       default:
-        return match10(_value10!);
+        return match10(_value10);
     }
   }
 
@@ -794,7 +794,7 @@ class Coproduct10<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> {
       ].toCoproductString();
 }
 
-extension<T> on Iterable<T?> {
+extension<T> on Iterable<T> {
   String toCoproductString() =>
       '(${firstWhere((e) => e != null, orElse: () => null)?.toString() ?? ''})';
 }

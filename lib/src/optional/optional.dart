@@ -4,7 +4,7 @@ import 'package:dfunc/src/func/predicate.dart';
 class Optional<A> implements Functor<Optional, A> {
   const Optional._(this._value);
 
-  const Optional.of(A? value) : this._(value);
+  const Optional.of(A value) : this._(value);
 
   const Optional.empty() : this._(null);
 
@@ -12,16 +12,16 @@ class Optional<A> implements Functor<Optional, A> {
     if (_value == null) throw ArgumentError('Must not be null.');
   }
 
-  final A? _value;
+  final A _value;
 
   bool isEmpty() => _value == null;
 
-  A? getOrNull() => _value;
+  A getOrNull() => _value;
 
   A getOrElse(A Function() ifEmpty) => _value ?? ifEmpty();
 
   B fold<B>(B Function() ifEmpty, B Function(A) ifValue) =>
-      _value == null ? ifEmpty() : ifValue(_value!);
+      _value == null ? ifEmpty() : ifValue(_value);
 
   @override
   Optional<B> map<B>(B Function(A) f) =>
