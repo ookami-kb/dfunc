@@ -1,3 +1,6 @@
+## 0.5.1+1
+- Fixed Coproduct10 branching
+
 ## 0.5.1
 - Switched off NNBD for 0.5
 
