@@ -687,7 +687,7 @@ class Coproduct10<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> {
       : this._(null, null, null, null, null, null, null, null, value, null, 8);
 
   const Coproduct10.item10(T10 value)
-      : this._(null, null, null, null, null, null, null, null, null, value, 8);
+      : this._(null, null, null, null, null, null, null, null, null, value, 9);
 
   final T1 _value1;
   final T2 _value2;
