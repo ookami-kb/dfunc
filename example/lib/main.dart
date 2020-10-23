@@ -29,7 +29,7 @@ void main() {
 
   final either = Either<Exception, String>.right('test');
   either.isRight() == true;
-  either.map((s) => s.toUpperCase()).right == 'TEST';
+  either.map((s) => s.toUpperCase()).fold(always(null), identity) == 'TEST';
 }
 
 class Base extends Coproduct2<Item1, Item2> {

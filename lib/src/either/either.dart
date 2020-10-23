@@ -20,9 +20,9 @@ abstract class Either<L, R> implements Coproduct2<L, R> {
 
   bool isRight() => this is _Right;
 
-  L get left;
+  L get _left;
 
-  R get right;
+  R get _right;
 
   @override
   T fold<T>(T Function(L) onLeft, T Function(R) onRight);
@@ -31,11 +31,16 @@ abstract class Either<L, R> implements Coproduct2<L, R> {
 
   Either<L, T> flatMap<T>(Either<L, T> Function(R) f);
 
+  Either<L1, R> mapLeft<L1>(L1 Function(L) f) => fold(
+        (l) => Either.left(f(l)),
+        (r) => Either.right(r),
+      );
+
   Either<L, Product2<R, R2>> combine<R2>(Either<L, R2> other) => isLeft()
-      ? Either.left(left)
+      ? Either.left(_left)
       : other.isLeft()
-          ? Either.left(other.left)
-          : Either.right(Product2(right, other.right));
+          ? Either.left(other._left)
+          : Either.right(Product2(_right, other._right));
 }
 
 class _Left<L, R> extends Either<L, R> {
@@ -44,10 +49,10 @@ class _Left<L, R> extends Either<L, R> {
   final L _value;
 
   @override
-  L get left => _value;
+  L get _left => _value;
 
   @override
-  R get right => throw StateError('right called on left value');
+  R get _right => throw StateError('right called on left value');
 
   @override
   T fold<T>(T Function(L) onLeft, T Function(R) onRight) => onLeft(_value);
@@ -74,10 +79,10 @@ class _Right<L, R> extends Either<L, R> {
   final R _value;
 
   @override
-  L get left => throw StateError('left called on right value');
+  L get _left => throw StateError('left called on right value');
 
   @override
-  R get right => _value;
+  R get _right => _value;
 
   @override
   T fold<T>(T Function(L) onLeft, T Function(R) onRight) => onRight(_value);
