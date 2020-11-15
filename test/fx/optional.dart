@@ -6,7 +6,7 @@ void main() {
   test('optionalFx', () {
     final results = <int>[];
 
-    optionalFx((bind) {
+    optionalFx<void>((bind) {
       final a = bind<int>(Optional.some(1));
       results.add(a);
 
@@ -23,7 +23,7 @@ void main() {
   test('optionalFxAsync', () async {
     final results = <int>[];
 
-    await optionalFxAsync((bind) async {
+    await optionalFxAsync<void>((bind) async {
       final a = bind<int>(Optional.some(1));
       results.add(a);
 

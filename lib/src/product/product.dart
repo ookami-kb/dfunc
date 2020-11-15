@@ -124,6 +124,6 @@ class Product5<T1, T2, T3, T4, T5> {
   String toString() => [item1, item2, item3, item4, item5].toProductString();
 }
 
-extension on Iterable<Object?> {
+extension on Iterable<Object> {
   String toProductString() => '(${map((e) => e.toString()).join(', ')})';
 }

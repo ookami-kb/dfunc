@@ -9,7 +9,7 @@ void main() {
     });
 
     test('let with null', () {
-      final int? a = null;
+      final int a = null;
       final result = a?.let((it) => it + 2);
       expect(result, null);
     });

@@ -9,7 +9,7 @@ void main() {
     final e4 = Either<String, int>.right(4);
     final e5 = Either<String, int>.right(5);
     final result = Eithers.combine5(e1, e2, e3, e4, e5);
-    expect(result.right, Product5(1, 2, 3, 4, 5));
+    expect(result.fold(always(null), identity), Product5(1, 2, 3, 4, 5));
   });
 
   test('combines 5 eithers with 1 left correctly', () {
@@ -19,6 +19,6 @@ void main() {
     final e4 = Either<String, int>.left('error');
     final e5 = Either<String, int>.right(5);
     final result = Eithers.combine5(e1, e2, e3, e4, e5);
-    expect(result.left, 'error');
+    expect(result.fold(identity, always('')), 'error');
   });
 }

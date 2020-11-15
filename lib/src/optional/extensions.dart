@@ -29,7 +29,7 @@ extension FutureOptionalExtension<T> on Future<Optional<T>> {
       then((v) => v.fold(onEmpty, onValue));
 }
 
-extension OptionalExtension<T> on T? {
+extension OptionalExtension<T> on T {
   Optional<T> toOptional() => Optional.of(this);
 }
 
