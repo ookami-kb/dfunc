@@ -85,7 +85,7 @@ void main() {
   });
 
   group('Future map()', () {
-    Future<Optional<String>> create(String value) async => Optional.of(value);
+    Future<Optional<String>> create(String? value) async => Optional.of(value);
 
     test('works for empty Optional', () async {
       final optional = await create(null).mapAsync(int.parse);
@@ -99,7 +99,7 @@ void main() {
   });
 
   group('Future flatMap()', () {
-    Future<Optional<String>> create(String value) async => Optional.of(value);
+    Future<Optional<String>> create(String? value) async => Optional.of(value);
     Optional<int> map(String value) => Optional.of(int.parse(value));
 
     test('works for empty Optional', () async {
@@ -115,7 +115,7 @@ void main() {
 
   group('toOptional()', () {
     test('creates empty Optional', () {
-      final String value = null;
+      final String? value = null;
       expect(value.toOptional().isEmpty(), true);
     });
 
