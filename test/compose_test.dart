@@ -11,7 +11,7 @@ void main() {
 
   test('compose parses int, floors and converts back to string', () {
     final floor = (double a) => a.floor();
-    final toString = (x) => x.toString();
+    final toString = (dynamic x) => x.toString();
     final composed = toString.compose(floor).compose(double.parse);
     expect(composed('123.456'), '123');
   });

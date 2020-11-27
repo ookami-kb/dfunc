@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_implementing_value_types
+
 import 'package:dfunc/dfunc.dart';
 
 /// One of the popular examples of [Coproduct2] type.
@@ -67,7 +69,8 @@ class _Left<L, R> extends Either<L, R> {
   int get hashCode => _value.hashCode;
 
   @override
-  bool operator ==(other) => other is _Left<L, R> && other._value == _value;
+  bool operator ==(Object other) =>
+      other is _Left<L, R> && other._value == _value;
 
   @override
   String toString() => 'Left($_value)';
@@ -97,7 +100,8 @@ class _Right<L, R> extends Either<L, R> {
   int get hashCode => _value.hashCode;
 
   @override
-  bool operator ==(other) => other is _Right<L, R> && other._value == _value;
+  bool operator ==(Object other) =>
+      other is _Right<L, R> && other._value == _value;
 
   @override
   String toString() => 'Right($_value)';

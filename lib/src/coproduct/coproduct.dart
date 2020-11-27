@@ -8,18 +8,18 @@ class Coproduct0 {
   int get hashCode => 0;
 
   @override
-  bool operator ==(other) => other is Coproduct0;
+  bool operator ==(Object other) => other is Coproduct0;
 
   @override
-  String toString() => [].toCoproductString();
+  String toString() => <dynamic>[].toCoproductString();
 }
 
 class Coproduct1<T1> {
-  final T1 _value1;
-
   const Coproduct1.item1(T1 value) : this._(value);
 
-  const Coproduct1._(this._value1) : assert(_value1 != null);
+  const Coproduct1._(this._value1);
+
+  final T1 _value1;
 
   R fold<R>(Func1<T1, R> match1) => match1(_value1);
 
@@ -27,7 +27,8 @@ class Coproduct1<T1> {
   int get hashCode => _value1.hashCode;
 
   @override
-  bool operator ==(other) => other is Coproduct1 && other._value1 == _value1;
+  bool operator ==(Object other) =>
+      other is Coproduct1 && other._value1 == _value1;
 
   @override
   String toString() => [_value1].toCoproductString();
@@ -38,11 +39,12 @@ class Coproduct2<T1, T2> {
 
   const Coproduct2.item2(T2 value) : this._(null, value, 1);
 
+  const Coproduct2._(this._value1, this._value2, this._discriminator);
+
   final T1? _value1;
   final T2? _value2;
-  final int _discriminator;
 
-  const Coproduct2._(this._value1, this._value2, this._discriminator);
+  final int _discriminator;
 
   R fold<R>(R Function(T1) match1, R Function(T2) match2) {
     switch (_discriminator) {
@@ -57,7 +59,7 @@ class Coproduct2<T1, T2> {
   int get hashCode => hash2(_value1, _value2);
 
   @override
-  bool operator ==(other) =>
+  bool operator ==(Object other) =>
       other is Coproduct2 &&
       other._value1 == _value1 &&
       other._value2 == _value2;
@@ -73,17 +75,18 @@ class Coproduct3<T1, T2, T3> {
 
   const Coproduct3.item3(T3 value) : this._(null, null, value, 2);
 
-  final T1? _value1;
-  final T2? _value2;
-  final T3? _value3;
-  final int _discriminator;
-
   const Coproduct3._(
     this._value1,
     this._value2,
     this._value3,
     this._discriminator,
   );
+
+  final T1? _value1;
+  final T2? _value2;
+  final T3? _value3;
+
+  final int _discriminator;
 
   R fold<R>(
     R Function(T1) match1,
@@ -104,7 +107,7 @@ class Coproduct3<T1, T2, T3> {
   int get hashCode => hash3(_value1, _value2, _value3);
 
   @override
-  bool operator ==(other) =>
+  bool operator ==(Object other) =>
       other is Coproduct3 &&
       other._value1 == _value1 &&
       other._value2 == _value2 &&
@@ -123,12 +126,6 @@ class Coproduct4<T1, T2, T3, T4> {
 
   const Coproduct4.item4(T4 value) : this._(null, null, null, value, 3);
 
-  final T1? _value1;
-  final T2? _value2;
-  final T3? _value3;
-  final T4? _value4;
-  final int _discriminator;
-
   const Coproduct4._(
     this._value1,
     this._value2,
@@ -136,6 +133,13 @@ class Coproduct4<T1, T2, T3, T4> {
     this._value4,
     this._discriminator,
   );
+
+  final T1? _value1;
+  final T2? _value2;
+  final T3? _value3;
+  final T4? _value4;
+
+  final int _discriminator;
 
   R fold<R>(
     R Function(T1) match1,
@@ -156,10 +160,11 @@ class Coproduct4<T1, T2, T3, T4> {
   }
 
   @override
-  int get hashCode => hashObjects([_value1, _value2, _value3, _value4]);
+  int get hashCode =>
+      hashObjects(<dynamic>[_value1, _value2, _value3, _value4]);
 
   @override
-  bool operator ==(other) =>
+  bool operator ==(Object other) =>
       other is Coproduct4 &&
       other._value1 == _value1 &&
       other._value2 == _value2 &&
@@ -181,13 +186,6 @@ class Coproduct5<T1, T2, T3, T4, T5> {
 
   const Coproduct5.item5(T5 value) : this._(null, null, null, null, value, 4);
 
-  final T1? _value1;
-  final T2? _value2;
-  final T3? _value3;
-  final T4? _value4;
-  final T5? _value5;
-  final int _discriminator;
-
   const Coproduct5._(
     this._value1,
     this._value2,
@@ -196,6 +194,14 @@ class Coproduct5<T1, T2, T3, T4, T5> {
     this._value5,
     this._discriminator,
   );
+
+  final T1? _value1;
+  final T2? _value2;
+  final T3? _value3;
+  final T4? _value4;
+  final T5? _value5;
+
+  final int _discriminator;
 
   R fold<R>(
     R Function(T1) match1,
@@ -220,10 +226,10 @@ class Coproduct5<T1, T2, T3, T4, T5> {
 
   @override
   int get hashCode =>
-      hashObjects([_value1, _value2, _value3, _value4, _value5]);
+      hashObjects(<dynamic>[_value1, _value2, _value3, _value4, _value5]);
 
   @override
-  bool operator ==(other) =>
+  bool operator ==(Object other) =>
       other is Coproduct5 &&
       other._value1 == _value1 &&
       other._value2 == _value2 &&
@@ -255,14 +261,6 @@ class Coproduct6<T1, T2, T3, T4, T5, T6> {
   const Coproduct6.item6(T6 value)
       : this._(null, null, null, null, null, value, 5);
 
-  final T1? _value1;
-  final T2? _value2;
-  final T3? _value3;
-  final T4? _value4;
-  final T5? _value5;
-  final T6? _value6;
-  final int _discriminator;
-
   const Coproduct6._(
     this._value1,
     this._value2,
@@ -272,6 +270,15 @@ class Coproduct6<T1, T2, T3, T4, T5, T6> {
     this._value6,
     this._discriminator,
   );
+
+  final T1? _value1;
+  final T2? _value2;
+  final T3? _value3;
+  final T4? _value4;
+  final T5? _value5;
+  final T6? _value6;
+
+  final int _discriminator;
 
   R fold<R>(
     R Function(T1) match1,
@@ -298,11 +305,11 @@ class Coproduct6<T1, T2, T3, T4, T5, T6> {
   }
 
   @override
-  int get hashCode =>
-      hashObjects([_value1, _value2, _value3, _value4, _value5, _value6]);
+  int get hashCode => hashObjects(
+      <dynamic>[_value1, _value2, _value3, _value4, _value5, _value6]);
 
   @override
-  bool operator ==(other) =>
+  bool operator ==(Object other) =>
       other is Coproduct6 &&
       other._value1 == _value1 &&
       other._value2 == _value2 &&
@@ -338,15 +345,6 @@ class Coproduct7<T1, T2, T3, T4, T5, T6, T7> {
   const Coproduct7.item7(T7 value)
       : this._(null, null, null, null, null, null, value, 6);
 
-  final T1? _value1;
-  final T2? _value2;
-  final T3? _value3;
-  final T4? _value4;
-  final T5? _value5;
-  final T6? _value6;
-  final T7? _value7;
-  final int _discriminator;
-
   const Coproduct7._(
     this._value1,
     this._value2,
@@ -357,6 +355,16 @@ class Coproduct7<T1, T2, T3, T4, T5, T6, T7> {
     this._value7,
     this._discriminator,
   );
+
+  final T1? _value1;
+  final T2? _value2;
+  final T3? _value3;
+  final T4? _value4;
+  final T5? _value5;
+  final T6? _value6;
+  final T7? _value7;
+
+  final int _discriminator;
 
   R fold<R>(
     R Function(T1) match1,
@@ -386,7 +394,7 @@ class Coproduct7<T1, T2, T3, T4, T5, T6, T7> {
   }
 
   @override
-  int get hashCode => hashObjects([
+  int get hashCode => hashObjects(<dynamic>[
         _value1,
         _value2,
         _value3,
@@ -397,7 +405,7 @@ class Coproduct7<T1, T2, T3, T4, T5, T6, T7> {
       ]);
 
   @override
-  bool operator ==(other) =>
+  bool operator ==(Object other) =>
       other is Coproduct7 &&
       other._value1 == _value1 &&
       other._value2 == _value2 &&
@@ -444,16 +452,6 @@ class Coproduct8<T1, T2, T3, T4, T5, T6, T7, T8> {
   const Coproduct8.item8(T8 value)
       : this._(null, null, null, null, null, null, null, value, 7);
 
-  final T1? _value1;
-  final T2? _value2;
-  final T3? _value3;
-  final T4? _value4;
-  final T5? _value5;
-  final T6? _value6;
-  final T7? _value7;
-  final T8? _value8;
-  final int _discriminator;
-
   const Coproduct8._(
     this._value1,
     this._value2,
@@ -465,6 +463,17 @@ class Coproduct8<T1, T2, T3, T4, T5, T6, T7, T8> {
     this._value8,
     this._discriminator,
   );
+
+  final T1? _value1;
+  final T2? _value2;
+  final T3? _value3;
+  final T4? _value4;
+  final T5? _value5;
+  final T6? _value6;
+  final T7? _value7;
+  final T8? _value8;
+
+  final int _discriminator;
 
   R fold<R>(
     R Function(T1) match1,
@@ -497,7 +506,7 @@ class Coproduct8<T1, T2, T3, T4, T5, T6, T7, T8> {
   }
 
   @override
-  int get hashCode => hashObjects([
+  int get hashCode => hashObjects(<dynamic>[
         _value1,
         _value2,
         _value3,
@@ -509,7 +518,7 @@ class Coproduct8<T1, T2, T3, T4, T5, T6, T7, T8> {
       ]);
 
   @override
-  bool operator ==(other) =>
+  bool operator ==(Object other) =>
       other is Coproduct8 &&
       other._value1 == _value1 &&
       other._value2 == _value2 &&
@@ -561,17 +570,6 @@ class Coproduct9<T1, T2, T3, T4, T5, T6, T7, T8, T9> {
   const Coproduct9.item9(T9 value)
       : this._(null, null, null, null, null, null, null, null, value, 8);
 
-  final T1? _value1;
-  final T2? _value2;
-  final T3? _value3;
-  final T4? _value4;
-  final T5? _value5;
-  final T6? _value6;
-  final T7? _value7;
-  final T8? _value8;
-  final T9? _value9;
-  final int _discriminator;
-
   const Coproduct9._(
     this._value1,
     this._value2,
@@ -584,6 +582,18 @@ class Coproduct9<T1, T2, T3, T4, T5, T6, T7, T8, T9> {
     this._value9,
     this._discriminator,
   );
+
+  final T1? _value1;
+  final T2? _value2;
+  final T3? _value3;
+  final T4? _value4;
+  final T5? _value5;
+  final T6? _value6;
+  final T7? _value7;
+  final T8? _value8;
+  final T9? _value9;
+
+  final int _discriminator;
 
   R fold<R>(
     R Function(T1) match1,
@@ -619,7 +629,7 @@ class Coproduct9<T1, T2, T3, T4, T5, T6, T7, T8, T9> {
   }
 
   @override
-  int get hashCode => hashObjects([
+  int get hashCode => hashObjects(<dynamic>[
         _value1,
         _value2,
         _value3,
@@ -632,7 +642,7 @@ class Coproduct9<T1, T2, T3, T4, T5, T6, T7, T8, T9> {
       ]);
 
   @override
-  bool operator ==(other) =>
+  bool operator ==(Object other) =>
       other is Coproduct9 &&
       other._value1 == _value1 &&
       other._value2 == _value2 &&
@@ -689,18 +699,6 @@ class Coproduct10<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> {
   const Coproduct10.item10(T10 value)
       : this._(null, null, null, null, null, null, null, null, null, value, 9);
 
-  final T1? _value1;
-  final T2? _value2;
-  final T3? _value3;
-  final T4? _value4;
-  final T5? _value5;
-  final T6? _value6;
-  final T7? _value7;
-  final T8? _value8;
-  final T9? _value9;
-  final T10? _value10;
-  final int _discriminator;
-
   const Coproduct10._(
     this._value1,
     this._value2,
@@ -714,6 +712,19 @@ class Coproduct10<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> {
     this._value10,
     this._discriminator,
   );
+
+  final T1? _value1;
+  final T2? _value2;
+  final T3? _value3;
+  final T4? _value4;
+  final T5? _value5;
+  final T6? _value6;
+  final T7? _value7;
+  final T8? _value8;
+  final T9? _value9;
+  final T10? _value10;
+
+  final int _discriminator;
 
   R fold<R>(
     R Function(T1) match1,
@@ -752,7 +763,7 @@ class Coproduct10<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> {
   }
 
   @override
-  int get hashCode => hashObjects([
+  int get hashCode => hashObjects(<dynamic>[
         _value1,
         _value2,
         _value3,
@@ -766,7 +777,7 @@ class Coproduct10<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> {
       ]);
 
   @override
-  bool operator ==(other) =>
+  bool operator ==(Object other) =>
       other is Coproduct10 &&
       other._value1 == _value1 &&
       other._value2 == _value2 &&

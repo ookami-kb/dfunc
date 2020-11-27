@@ -11,8 +11,9 @@ Either<L, R> eitherFx<L, R>(R Function(BindEither<L> bind) run) {
 
   try {
     return Either.right(run(_bind));
-  } on _BindEitherError catch (e) {
-    return Either.left(e.internal);
+    // ignore: avoid_catching_errors
+  } on _BindEitherError<L> catch (e) {
+    return Either<L, R>.left(e.internal);
   }
 }
 
@@ -24,7 +25,8 @@ Future<Either<L, R>> eitherFxAsync<L, R>(
 
   try {
     return Either.right(await run(_bind));
-  } on _BindEitherError catch (e) {
+    // ignore: avoid_catching_errors
+  } on _BindEitherError<L> catch (e) {
     return Either.left(e.internal);
   }
 }

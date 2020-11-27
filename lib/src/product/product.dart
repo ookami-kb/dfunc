@@ -7,10 +7,10 @@ class Product0 {
   int get hashCode => 0;
 
   @override
-  bool operator ==(other) => other is Product0;
+  bool operator ==(Object other) => other is Product0;
 
   @override
-  String toString() => [].toProductString();
+  String toString() => <dynamic>[].toProductString();
 }
 
 class Product1<T1> {
@@ -22,7 +22,7 @@ class Product1<T1> {
   int get hashCode => item1.hashCode;
 
   @override
-  bool operator ==(other) => other is Product1 && other.item1 == item1;
+  bool operator ==(Object other) => other is Product1 && other.item1 == item1;
 
   @override
   String toString() => [item1].toProductString();
@@ -39,7 +39,7 @@ class Product2<T1, T2> {
   int get hashCode => hash2(item1, item2);
 
   @override
-  bool operator ==(other) =>
+  bool operator ==(Object other) =>
       other is Product2 && other.item1 == item1 && other.item2 == item2;
 
   @override
@@ -59,7 +59,7 @@ class Product3<T1, T2, T3> {
   int get hashCode => hash3(item1, item2, item3);
 
   @override
-  bool operator ==(other) =>
+  bool operator ==(Object other) =>
       other is Product3 &&
       other.item1 == item1 &&
       other.item2 == item2 &&
@@ -81,10 +81,10 @@ class Product4<T1, T2, T3, T4> {
   final T4 item4;
 
   @override
-  int get hashCode => hashObjects([item1, item2, item3, item4]);
+  int get hashCode => hashObjects(<dynamic>[item1, item2, item3, item4]);
 
   @override
-  bool operator ==(other) =>
+  bool operator ==(Object other) =>
       other is Product4 &&
       other.item1 == item1 &&
       other.item2 == item2 &&
@@ -109,10 +109,10 @@ class Product5<T1, T2, T3, T4, T5> {
   final T5 item5;
 
   @override
-  int get hashCode => hashObjects([item1, item2, item3, item4, item5]);
+  int get hashCode => hashObjects(<dynamic>[item1, item2, item3, item4, item5]);
 
   @override
-  bool operator ==(other) =>
+  bool operator ==(Object other) =>
       other is Product5 &&
       other.item1 == item1 &&
       other.item2 == item2 &&

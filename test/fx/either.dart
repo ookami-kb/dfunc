@@ -7,13 +7,13 @@ void main() {
     final results = <int>[];
 
     eitherFx<Exception, void>((bind) {
-      final a = bind<int>(Either.right(1));
+      final a = bind<int>(const Either.right(1));
       results.add(a);
 
       final b = bind<String>(Either.left(Exception()));
       results.add(int.parse(b));
 
-      final c = bind<int>(Either.right(3));
+      final c = bind<int>(const Either.right(3));
       results.add(c);
     });
 
@@ -24,13 +24,13 @@ void main() {
     final results = <int>[];
 
     await eitherFxAsync<Exception, void>((bind) async {
-      final a = bind<int>(Either.right(1));
+      final a = bind<int>(const Either.right(1));
       results.add(a);
 
       final b = bind<int>(Either.left(Exception()));
       results.add(b);
 
-      final c = bind<int>(Either.right(3));
+      final c = bind<int>(const Either.right(3));
       results.add(c);
     });
 

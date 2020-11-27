@@ -7,7 +7,7 @@ void main() {
     final second = ['a', 'b', 'c', 'd'];
     expect(
       first.zipWith(second),
-      [
+      const [
         Product2(1, 'a'),
         Product2(2, 'b'),
         Product2(3, 'c'),
@@ -17,13 +17,13 @@ void main() {
 
   test('zips non-empty list with empty', () {
     final first = [1, 2, 3];
-    final second = [];
-    expect(first.zipWith(second), []);
+    final second = <int>[];
+    expect(first.zipWith(second), <int>[]);
   });
 
   test('zips empty list with non-empty', () {
-    final first = [];
+    final first = <String>[];
     final second = ['a', 'b', 'c', 'd'];
-    expect(first.zipWith(second), []);
+    expect(first.zipWith(second), <String>[]);
   });
 }
