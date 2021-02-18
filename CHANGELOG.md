@@ -1,3 +1,6 @@
+## 0.6.0
+- Migrate to stable null safety
+
 ## 0.6.0-nullsafety.2
 - Fixed nullability issues, switched to mews_pedantic rules
 
