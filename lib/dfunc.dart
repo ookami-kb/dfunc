@@ -15,6 +15,7 @@ export 'src/func/partial.dart';
 export 'src/group_by.dart';
 export 'src/identity.dart';
 export 'src/ignore.dart';
+export 'src/intersperse.dart';
 export 'src/is_empty.dart';
 export 'src/limit.dart';
 export 'src/map.dart';
