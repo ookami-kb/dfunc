@@ -1,3 +1,11 @@
+## 0.6.1
+
+ - **FEAT**: Add tryEither methods.
+ - **DOCS**: Update readme.
+ - **CI**: Update workflow.
+ - **CI**: Add melos.
+ - **CHORE**: Update dependencies.
+
 ## 0.6.0
 - Migrate to stable null safety
 
