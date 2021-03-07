@@ -6,7 +6,9 @@ void main() {
 
   // Either
 
-  final either = Either<Exception, String>.right('test');
+  const either = Either<Exception, String>.right('test');
+  // ignore: unnecessary_statements
   either.isRight() == true;
+  // ignore: unnecessary_statements
   either.map((s) => s.toUpperCase()).fold(always(null), identity) == 'TEST';
 }
