@@ -7,6 +7,7 @@ export 'src/coproduct/coproduct.dart';
 export 'src/either/either.dart';
 export 'src/either/eithers.dart';
 export 'src/either/extensions.dart';
+export 'src/either/try_either.dart';
 export 'src/f.dart';
 export 'src/func.dart';
 export 'src/func/curry.dart';
