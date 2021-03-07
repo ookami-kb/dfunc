@@ -1,15 +1,14 @@
-image::https://github.com/ookami-kb/dfunc/workflows/Dart%20CI/badge.svg[]
+![](https://github.com/ookami-kb/dfunc/workflows/Dart%20CI/badge.svg)
 
 Functional batteries for Dart programming language.
 
 Provides implementation of Optional, Either and other types + some helper functions.
 
-== Usage
+## Usage
 
 A simple usage example:
 
-[source,dart]
-----
+```dart
 import 'package:dfunc/dfunc.dart';
 
 void main() {
@@ -22,8 +21,8 @@ void main() {
   either.isRight() == true;
   either.map((s) => s.toUpperCase()).fold(always(null), identity) == 'TEST';
 }
-----
+```
 
-== Features and bugs
+## Features and bugs
 
-Please file feature requests and bugs at the https://github.com/ookami-kb/dfunc/issues[issue-tracker].
+Please file feature requests and bugs at the [issue tracker](https://github.com/ookami-kb/dfunc/issues).
