@@ -1,4 +1,5 @@
 ![](https://github.com/ookami-kb/dfunc/workflows/Dart%20CI/badge.svg)
+[![Pub Version](https://img.shields.io/pub/v/dfunc)](https://pub.dev/packages/dfunc)
 
 Functional batteries for Dart programming language.
 
