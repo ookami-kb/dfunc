@@ -1,3 +1,8 @@
+## 0.6.2
+
+ - **FEAT**: Add compact.
+ - **DOCS**: Revert readme to markdown.
+
 ## 0.6.1
 
  - **FEAT**: Add tryEither methods.
