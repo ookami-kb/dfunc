@@ -1,3 +1,14 @@
+## 0.7.0
+
+> Note: This release has breaking changes.
+
+ - **REFACTOR**: Use relative imports.
+ - **DOCS**: Update README.md.
+ - **DOCS**: Update docs.
+ - **CI**: Switch to setup-dart action (#7).
+ - **CHORE**: Add pub.dev badge.
+ - **BREAKING** **FEAT**: Add typedefs.
+
 ## 0.6.2
 
  - **FEAT**: Add compact.
