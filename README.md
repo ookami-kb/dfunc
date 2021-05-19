@@ -3,10 +3,10 @@
 
 Lightweight and practical functional library for Dart programming language.
 
-The goal of this library is not deep and hardcore FP features. If you need them, take a look
+The goal of this library is not having deep and hardcore FP features. If you need them, take a look
 at [dartz](https://pub.dev/packages/dartz) package.
 
-`dfunc` instead, provides some practical features base on FP principles, that we use extensively in our production
+`dfunc` instead, provides some practical features based on FP principles, that we use extensively in our production
 codebase. We try to keep the library aligned with "Dart way" of doing things, instead of turning it into Haskell or
 Scala :)
 
