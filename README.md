@@ -68,13 +68,11 @@ void main() {
 
 ## Either
 
-TBD
+`TBD`
 
 ## Utilities
 
-A simple usage example:
-
-TBD
+`TBD`
 
 ## Features and bugs
 
