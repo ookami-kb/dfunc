@@ -2,13 +2,16 @@ import 'dart:async';
 
 import '../../dfunc.dart';
 
-typedef BindEither = T Function<T>(Either<Exception, T>);
+typedef Result<T> = Either<Exception, T>;
 
-Future<Either<Exception, T>> tryEitherAsync<T>(
+typedef AsyncResult<T> = Future<Result<T>>;
+
+typedef BindEither = T Function<T>(Result<T>);
+
+AsyncResult<T> tryEitherAsync<T>(
   FutureOr<T> Function(BindEither bind) block,
 ) async {
-  A bind<A>(Either<Exception, A> either) =>
-      either.fold((e) => throw e, identity);
+  A bind<A>(Result<A> either) => either.fold((e) => throw e, identity);
 
   try {
     return Either.right(await block(bind));
@@ -17,9 +20,8 @@ Future<Either<Exception, T>> tryEitherAsync<T>(
   }
 }
 
-Either<Exception, T> tryEither<T>(T Function(BindEither bind) block) {
-  A bind<A>(Either<Exception, A> either) =>
-      either.fold((e) => throw e, identity);
+Result<T> tryEither<T>(T Function(BindEither bind) block) {
+  A bind<A>(Result<A> either) => either.fold((e) => throw e, identity);
 
   try {
     return Either.right(block(bind));
@@ -29,7 +31,7 @@ Either<Exception, T> tryEither<T>(T Function(BindEither bind) block) {
 }
 
 extension FutureToEitherExt<T> on Future<T> {
-  Future<Either<Exception, T>> toEither() async {
+  AsyncResult<T> toEither() async {
     try {
       return Either.right(await this);
     } on Exception catch (e) {
