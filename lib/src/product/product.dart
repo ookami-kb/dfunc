@@ -1,4 +1,4 @@
-import 'package:dfunc/src/utils/hash.dart';
+import '../utils/hash.dart';
 
 class Product0 {
   const Product0();

@@ -1,4 +1,4 @@
-import 'package:dfunc/src/func.dart';
+import '../func.dart';
 
 Func1<B, C> partial1<A, B, C>(A a, Func2<A, B, C> f) => _partial1(a, f);
 

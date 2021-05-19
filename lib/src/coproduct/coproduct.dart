@@ -1,5 +1,5 @@
-import 'package:dfunc/dfunc.dart';
-import 'package:dfunc/src/utils/hash.dart';
+import '../../dfunc.dart';
+import '../utils/hash.dart';
 
 class Coproduct0 {
   const Coproduct0.empty();

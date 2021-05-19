@@ -1,6 +1,6 @@
 // ignore_for_file: avoid_implementing_value_types
 
-import 'package:dfunc/dfunc.dart';
+import '../../dfunc.dart';
 
 /// One of the popular examples of [Coproduct2] type.
 ///

@@ -1,4 +1,4 @@
-import 'package:dfunc/dfunc.dart';
+import '../dfunc.dart';
 
 /// Returns functions that limits passed string to the `maxLength`
 /// number of characters.

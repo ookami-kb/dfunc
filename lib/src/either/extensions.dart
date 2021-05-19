@@ -1,18 +1,18 @@
 import 'dart:async';
 
-import 'package:dfunc/src/either/either.dart';
-import 'package:dfunc/src/func.dart';
-import 'package:dfunc/src/identity.dart';
+import '../func.dart';
+import '../identity.dart';
+import 'either.dart';
+
+typedef AsyncEither<L, R> = Future<Either<L, R>>;
 
 extension EitherAsync<L, R> on Either<L, R> {
-  Future<Either<L, T>> mapAsync<T>(FutureOr<T> Function(R) f) => fold(
+  AsyncEither<L, T> mapAsync<T>(FutureOr<T> Function(R) f) => fold(
         (e) async => Either.left(e),
         (r) async => Either.right(await f(r)),
       );
 
-  Future<Either<L, T>> flatMapAsync<T>(
-    FutureOr<Either<L, T>> Function(R) f,
-  ) =>
+  AsyncEither<L, T> flatMapAsync<T>(FutureOr<Either<L, T>> Function(R) f) =>
       fold(
         (e) async => Either<L, T>.left(e),
         (r) async => await f(r),
@@ -25,29 +25,31 @@ extension EitherAsync<L, R> on Either<L, R> {
 }
 
 extension EitherFutureExtension<L, R> on Either<FutureOr<L>, FutureOr<R>> {
-  Future<Either<L, R>> wait() => fold(
-        (v) async => Either.left(await v),
-        (v) async => Either.right(await v),
+  AsyncEither<L, R> wait() => fold(
+        (FutureOr<L> v) async => Either.left(await v),
+        (FutureOr<R> v) async => Either.right(await v),
       );
 }
 
-extension FutureEitherExtension<L, R> on Future<Either<L, R>> {
-  Future<Either<L, T>> mapAsync<T>(FutureOr<T> Function(R) f) async =>
+extension FutureEitherExtension<L, R> on AsyncEither<L, R> {
+  AsyncEither<L, T> mapAsync<T>(FutureOr<T> Function(R) f) async =>
       (await this).mapAsync(f);
 
   Future<Either<T, R>> mapLeftAsync<T>(FutureOr<T> Function(L) f) async =>
       (await this).mapLeftAsync(f);
 
-  Future<Either<L, T>> flatMapAsync<T>(
+  AsyncEither<L, T> flatMapAsync<T>(
     FutureOr<Either<L, T>> Function(R) f,
   ) async =>
       (await this).flatMapAsync(f);
 
   Future<T> foldAsync<T>(
-    Func1<L, FutureOr<T>> onLeft,
-    Func1<R, FutureOr<T>> onRight,
-  ) =>
-      then((v) => v.fold(onLeft, onRight));
+    FutureOr<T> Function(L) onLeft,
+    FutureOr<T> Function(R) onRight,
+  ) async {
+    final v = await this;
+    return v.fold(onLeft, onRight);
+  }
 }
 
 extension SameEitherExtension<T> on FutureOr<Either<T, T>> {
