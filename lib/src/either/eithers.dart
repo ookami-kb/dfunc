@@ -1,5 +1,5 @@
-import 'package:dfunc/src/either/either.dart';
-import 'package:dfunc/src/product/product.dart';
+import '../product/product.dart';
+import 'either.dart';
 
 abstract class Eithers {
   Eithers._();

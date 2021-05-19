@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:dfunc/src/either/either.dart';
-import 'package:dfunc/src/func.dart';
-import 'package:dfunc/src/identity.dart';
+import '../func.dart';
+import '../identity.dart';
+import 'either.dart';
 
 extension EitherAsync<L, R> on Either<L, R> {
   Future<Either<L, T>> mapAsync<T>(FutureOr<T> Function(R) f) => fold(
@@ -26,8 +26,8 @@ extension EitherAsync<L, R> on Either<L, R> {
 
 extension EitherFutureExtension<L, R> on Either<FutureOr<L>, FutureOr<R>> {
   Future<Either<L, R>> wait() => fold(
-        (v) async => Either.left(await v),
-        (v) async => Either.right(await v),
+        (FutureOr<L> v) async => Either.left(await v),
+        (FutureOr<R> v) async => Either.right(await v),
       );
 }
 
@@ -44,10 +44,12 @@ extension FutureEitherExtension<L, R> on Future<Either<L, R>> {
       (await this).flatMapAsync(f);
 
   Future<T> foldAsync<T>(
-    Func1<L, FutureOr<T>> onLeft,
-    Func1<R, FutureOr<T>> onRight,
-  ) =>
-      then((v) => v.fold(onLeft, onRight));
+    FutureOr<T> Function(L) onLeft,
+    FutureOr<T> Function(R) onRight,
+  ) async {
+    final v = await this;
+    return v.fold(onLeft, onRight);
+  }
 }
 
 extension SameEitherExtension<T> on FutureOr<Either<T, T>> {

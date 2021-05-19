@@ -1,4 +1,4 @@
-import 'package:dfunc/src/func/predicate.dart';
+import 'func/predicate.dart';
 
 /// Takes a function `f` and returns a function `g` such that if called with
 /// the same argument when `f` returns `true`, g returns `false` and when

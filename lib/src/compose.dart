@@ -1,4 +1,4 @@
-import 'package:dfunc/src/func.dart';
+import 'func.dart';
 
 extension Compose<B, C> on Func1<B, C> {
   /// Performs right-to-left function composition

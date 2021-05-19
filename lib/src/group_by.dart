@@ -1,4 +1,4 @@
-import 'package:dfunc/src/func.dart';
+import 'func.dart';
 
 /// Splits an iterable into sub-lists stored in a map, based on result
 /// of calling [getKey] function on each element of [items], and grouping

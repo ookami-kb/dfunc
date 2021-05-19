@@ -1,4 +1,4 @@
-import 'package:dfunc/dfunc.dart';
+import '../dfunc.dart';
 
 /// Creates an iterable of [Product2<A, B>] by pairing up
 /// equally positioned items from both iterables [a] and [b].

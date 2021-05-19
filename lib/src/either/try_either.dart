@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:dfunc/dfunc.dart';
+import '../../dfunc.dart';
 
 typedef BindEither = T Function<T>(Either<Exception, T>);
 

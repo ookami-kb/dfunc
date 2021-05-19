@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:dfunc/src/either/either.dart';
-import 'package:dfunc/src/identity.dart';
+import '../either/either.dart';
+import '../identity.dart';
 
 typedef BindEither<L> = R Function<R>(Either<L, R>);
 
