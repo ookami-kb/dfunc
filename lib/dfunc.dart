@@ -1,6 +1,7 @@
 library dfunc;
 
 export 'src/always.dart';
+export 'src/cast.dart';
 export 'src/compact.dart';
 export 'src/complement.dart';
 export 'src/compose.dart';
