@@ -1,3 +1,9 @@
+## 0.7.1
+
+ - **FEAT**: Add cast functions.
+ - **CHORE**: publish packages.
+ - **CHORE**: publish packages.
+
 ## 0.7.0
 
 > Note: This release has breaking changes.
