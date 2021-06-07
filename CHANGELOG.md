@@ -1,3 +1,8 @@
+## 0.7.2
+
+ - **FEAT**: Add `doOn*` extensions.
+ - **FEAT**: Add `flatMapLeftAsync`.
+
 ## 0.7.1
 
  - **FEAT**: Add cast functions.
