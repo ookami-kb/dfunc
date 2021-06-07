@@ -22,6 +22,14 @@ extension EitherAsync<L, R> on Either<L, R> {
         (e) async => Either.left(await f(e)),
         (r) async => Either.right(r),
       );
+
+  Future<Either<T, R>> flatMapLeftAsync<T>(
+    FutureOr<Either<T, R>> Function(L) f,
+  ) =>
+      fold(
+        (e) async => await f(e),
+        (r) async => Either.right(r),
+      );
 }
 
 extension EitherFutureExtension<L, R> on Either<FutureOr<L>, FutureOr<R>> {
@@ -42,6 +50,11 @@ extension FutureEitherExtension<L, R> on AsyncEither<L, R> {
     FutureOr<Either<L, T>> Function(R) f,
   ) async =>
       (await this).flatMapAsync(f);
+
+  Future<Either<T, R>> flatMapLeftAsync<T>(
+    FutureOr<Either<T, R>> Function(L) f,
+  ) async =>
+      (await this).flatMapLeftAsync(f);
 
   Future<T> foldAsync<T>(
     FutureOr<T> Function(L) onLeft,

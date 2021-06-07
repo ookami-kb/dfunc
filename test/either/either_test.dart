@@ -61,6 +61,13 @@ void main() {
           .flatMapAsync((v) => Either.right(int.parse(v)));
       expect(either.fold(always(0), identity), 123);
     });
+
+    test('Either::flatMapLeftAsync', () async {
+      final either = await Either<Exception, String>.left(Exception())
+          .flatMapLeftAsync(
+              (e) async => const Either<String, String>.left('Error'));
+      expect(either.fold(identity, (_) => throw Error()), 'Error');
+    });
   });
 
   group('EitherFutureExtension', () {
@@ -115,6 +122,13 @@ void main() {
       final value =
           await either.flatMapAsync((x) async => Either.right(int.parse(x)));
       expect(value.fold(always(0), identity), 123);
+    });
+
+    test('Future<Either>::flatMapLeftAsync with sync mapper', () async {
+      final either = Future.value(const Either<String, int>.left('123'));
+      final value =
+          await either.flatMapLeftAsync((x) => Either.left(int.parse(x)));
+      expect(value.fold(identity, always(0)), 123);
     });
 
     test('Future<Either>::join', () async {
