@@ -21,4 +21,7 @@ extension Maybe<A extends Object> on A? {
   /// b.maybeWhere((e) => e == 2); // null
   /// ```
   A? maybeWhere(Predicate<A> f) => maybeFlatMap((v) => f(v) ? v : null);
+
+  /// Returns result of [f] if [this] is null, else returns [this].
+  A ifNull(A Function() f) => this ?? f();
 }

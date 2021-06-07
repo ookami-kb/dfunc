@@ -51,4 +51,14 @@ void main() {
     const String x = 'a';
     expect(x.maybeWhere((e) => e.isNotEmpty), 'a');
   });
+
+  test('ifNull calls function for null value', () {
+    const String? x = null;
+    expect(x.ifNull(() => 'fallback'), 'fallback');
+  });
+
+  test('ifNull does not call function for non-null value', () {
+    const String? x = 'value';
+    expect(x.ifNull(() => 'fallback'), 'value');
+  });
 }
