@@ -36,6 +36,40 @@ void main() {
     });
   });
 
+  group('DoEither', () {
+    test('doOnLeft is triggered on left', () {
+      int x = 0;
+      const v = Either<int, String>.left(0);
+      // ignore: cascade_invocations
+      v.doOnLeft((_) => x = 1);
+      expect(x, 1);
+    });
+
+    test('doOnLeft is not triggered on right', () {
+      int x = 0;
+      const v = Either<int, String>.right('');
+      // ignore: cascade_invocations
+      v.doOnLeft((_) => x = 1);
+      expect(x, 0);
+    });
+
+    test('doOnRight is triggered on right', () {
+      int x = 0;
+      const v = Either<int, String>.right('');
+      // ignore: cascade_invocations
+      v.doOnRight((_) => x = 1);
+      expect(x, 1);
+    });
+
+    test('doOnRight is not triggered on left', () {
+      int x = 0;
+      const v = Either<int, String>.left(0);
+      // ignore: cascade_invocations
+      v.doOnRight((_) => x = 1);
+      expect(x, 0);
+    });
+  });
+
   group('EitherAsync', () {
     test('Either::mapAsync', () async {
       final either = const Either<int, String>.right('123').mapAsync(int.parse);
@@ -67,6 +101,38 @@ void main() {
           .flatMapLeftAsync(
               (e) async => const Either<String, String>.left('Error'));
       expect(either.fold(identity, (_) => throw Error()), 'Error');
+    });
+
+    test('doOnLeftAsync is triggered on left', () async {
+      int x = 0;
+      const v = Either<int, String>.left(0);
+      // ignore: cascade_invocations
+      await v.doOnLeftAsync((_) => x = 1);
+      expect(x, 1);
+    });
+
+    test('doOnLeftAsync is not triggered on right', () async {
+      int x = 0;
+      const v = Either<int, String>.right('');
+      // ignore: cascade_invocations
+      await v.doOnLeftAsync((_) => x = 1);
+      expect(x, 0);
+    });
+
+    test('doOnRightAsync is triggered on right', () async {
+      int x = 0;
+      const v = Either<int, String>.right('');
+      // ignore: cascade_invocations
+      await v.doOnRightAsync((_) => x = 1);
+      expect(x, 1);
+    });
+
+    test('doOnRightAsync is not triggered on left', () async {
+      int x = 0;
+      const v = Either<int, String>.left(0);
+      // ignore: cascade_invocations
+      await v.doOnRightAsync((_) => x = 1);
+      expect(x, 0);
     });
   });
 
@@ -135,6 +201,38 @@ void main() {
       final either = Future<Either<bool, bool>>.value(const Either.right(true));
       final value = await either.join();
       expect(value, true);
+    });
+
+    test('doOnLeftAsync is triggered on left', () async {
+      int x = 0;
+      final v = Future<Either<int, String>>.value(const Either.left(0));
+      // ignore: cascade_invocations
+      await v.doOnLeftAsync((_) => x = 1);
+      expect(x, 1);
+    });
+
+    test('doOnLeftAsync is not triggered on right', () async {
+      int x = 0;
+      final v = Future<Either<int, String>>.value(const Either.right(''));
+      // ignore: cascade_invocations
+      await v.doOnLeftAsync((_) => x = 1);
+      expect(x, 0);
+    });
+
+    test('doOnRightAsync is triggered on right', () async {
+      int x = 0;
+      final v = Future<Either<int, String>>.value(const Either.right(''));
+      // ignore: cascade_invocations
+      await v.doOnRightAsync((_) => x = 1);
+      expect(x, 1);
+    });
+
+    test('doOnRightAsync is not triggered on left', () async {
+      int x = 0;
+      final v = Future<Either<int, String>>.value(const Either.left(0));
+      // ignore: cascade_invocations
+      await v.doOnRightAsync((_) => x = 1);
+      expect(x, 0);
     });
   });
 

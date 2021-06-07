@@ -6,6 +6,32 @@ import 'either.dart';
 
 typedef AsyncEither<L, R> = Future<Either<L, R>>;
 
+extension DoEither<L, R> on Either<L, R> {
+  /// Performs a side-effect by running [block] function if the value
+  /// is left and returns the same Either.
+  ///
+  /// Can be useful for some logging, e.g.:
+  /// ```dart
+  /// final either = someEither.doOnLeft(print);
+  /// ```
+  Either<L, R> doOnLeft(void Function(L v) block) => mapLeft((v) {
+        block(v);
+        return v;
+      });
+
+  /// Performs a side-effect by running [block] function if the value
+  /// is right and returns the same Either.
+  ///
+  /// Can be useful for some logging, e.g.:
+  /// ```dart
+  /// final either = someEither.doOnRight(print);
+  /// ```
+  Either<L, R> doOnRight(void Function(R v) block) => map((v) {
+        block(v);
+        return v;
+      });
+}
+
 extension EitherAsync<L, R> on Either<L, R> {
   AsyncEither<L, T> mapAsync<T>(FutureOr<T> Function(R) f) => fold(
         (e) async => Either.left(e),
@@ -30,6 +56,18 @@ extension EitherAsync<L, R> on Either<L, R> {
         (e) async => await f(e),
         (r) async => Either.right(r),
       );
+
+  AsyncEither<L, R> doOnLeftAsync(FutureOr<void> Function(L v) block) =>
+      mapLeftAsync((v) async {
+        await block(v);
+        return v;
+      });
+
+  AsyncEither<L, R> doOnRightAsync(FutureOr<void> Function(R v) block) =>
+      mapAsync((v) async {
+        await block(v);
+        return v;
+      });
 }
 
 extension EitherFutureExtension<L, R> on Either<FutureOr<L>, FutureOr<R>> {
@@ -63,6 +101,18 @@ extension FutureEitherExtension<L, R> on AsyncEither<L, R> {
     final v = await this;
     return v.fold(onLeft, onRight);
   }
+
+  AsyncEither<L, R> doOnLeftAsync(FutureOr<void> Function(L v) block) async =>
+      (await this).mapLeftAsync((v) async {
+        await block(v);
+        return v;
+      });
+
+  AsyncEither<L, R> doOnRightAsync(FutureOr<void> Function(R v) block) async =>
+      (await this).mapAsync((v) async {
+        await block(v);
+        return v;
+      });
 }
 
 extension SameEitherExtension<T> on FutureOr<Either<T, T>> {
