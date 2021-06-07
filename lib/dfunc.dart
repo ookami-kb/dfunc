@@ -28,6 +28,7 @@ export 'src/maybe.dart';
 export 'src/pipe.dart';
 export 'src/product/product.dart';
 export 'src/scope.dart';
+export 'src/string_ext.dart';
 export 'src/substring.dart';
 export 'src/sum.dart';
 export 'src/t.dart';
