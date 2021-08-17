@@ -1,5 +1,6 @@
 ![](https://github.com/ookami-kb/dfunc/workflows/Dart%20CI/badge.svg)
 [![Pub Version](https://img.shields.io/pub/v/dfunc)](https://pub.dev/packages/dfunc)
+[![codecov](https://codecov.io/gh/ookami-kb/dfunc/branch/master/graph/badge.svg?token=K70NTIMBR5)](https://codecov.io/gh/ookami-kb/dfunc)
 
 Lightweight and practical functional library for Dart programming language.
 
