@@ -15,7 +15,11 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: dart-lang/setup-dart@v1
+      
       - name: Install dependencies
         run: dart pub get
+      
       - name: Run tests
-        run: dart pub run test
+        run: dart run test --coverage=coverage
+
+      - uses: codecov/codecov-action@v2
