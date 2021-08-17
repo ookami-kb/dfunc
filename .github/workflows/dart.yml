@@ -20,6 +20,8 @@ jobs:
         run: dart pub get
       
       - name: Run tests
-        run: dart run test --coverage=coverage
+        run: >
+          dart run test --coverage=coverage \
+            && dart run coverage:format_coverage -i coverage -o coverage/coverage.lcov --lcov
 
       - uses: codecov/codecov-action@v2
