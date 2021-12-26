@@ -1,5 +1,4 @@
 import '../../dfunc.dart';
-import '../utils/hash.dart';
 
 class Coproduct0 {
   const Coproduct0.empty();
@@ -56,7 +55,7 @@ class Coproduct2<T1, T2> {
   }
 
   @override
-  int get hashCode => hash2(_value1, _value2);
+  int get hashCode => Object.hash(_value1, _value2);
 
   @override
   bool operator ==(Object other) =>
@@ -104,7 +103,7 @@ class Coproduct3<T1, T2, T3> {
   }
 
   @override
-  int get hashCode => hash3(_value1, _value2, _value3);
+  int get hashCode => Object.hash(_value1, _value2, _value3);
 
   @override
   bool operator ==(Object other) =>
@@ -160,8 +159,7 @@ class Coproduct4<T1, T2, T3, T4> {
   }
 
   @override
-  int get hashCode =>
-      hashObjects(<dynamic>[_value1, _value2, _value3, _value4]);
+  int get hashCode => Object.hash(_value1, _value2, _value3, _value4);
 
   @override
   bool operator ==(Object other) =>
@@ -225,8 +223,7 @@ class Coproduct5<T1, T2, T3, T4, T5> {
   }
 
   @override
-  int get hashCode =>
-      hashObjects(<dynamic>[_value1, _value2, _value3, _value4, _value5]);
+  int get hashCode => Object.hash(_value1, _value2, _value3, _value4, _value5);
 
   @override
   bool operator ==(Object other) =>
@@ -305,8 +302,8 @@ class Coproduct6<T1, T2, T3, T4, T5, T6> {
   }
 
   @override
-  int get hashCode => hashObjects(
-      <dynamic>[_value1, _value2, _value3, _value4, _value5, _value6]);
+  int get hashCode =>
+      Object.hash(_value1, _value2, _value3, _value4, _value5, _value6);
 
   @override
   bool operator ==(Object other) =>
@@ -394,7 +391,7 @@ class Coproduct7<T1, T2, T3, T4, T5, T6, T7> {
   }
 
   @override
-  int get hashCode => hashObjects(<dynamic>[
+  int get hashCode => Object.hash(
         _value1,
         _value2,
         _value3,
@@ -402,7 +399,7 @@ class Coproduct7<T1, T2, T3, T4, T5, T6, T7> {
         _value5,
         _value6,
         _value7,
-      ]);
+      );
 
   @override
   bool operator ==(Object other) =>
@@ -506,7 +503,7 @@ class Coproduct8<T1, T2, T3, T4, T5, T6, T7, T8> {
   }
 
   @override
-  int get hashCode => hashObjects(<dynamic>[
+  int get hashCode => Object.hash(
         _value1,
         _value2,
         _value3,
@@ -515,7 +512,7 @@ class Coproduct8<T1, T2, T3, T4, T5, T6, T7, T8> {
         _value6,
         _value7,
         _value8,
-      ]);
+      );
 
   @override
   bool operator ==(Object other) =>
@@ -629,7 +626,7 @@ class Coproduct9<T1, T2, T3, T4, T5, T6, T7, T8, T9> {
   }
 
   @override
-  int get hashCode => hashObjects(<dynamic>[
+  int get hashCode => Object.hash(
         _value1,
         _value2,
         _value3,
@@ -639,7 +636,7 @@ class Coproduct9<T1, T2, T3, T4, T5, T6, T7, T8, T9> {
         _value7,
         _value8,
         _value9,
-      ]);
+      );
 
   @override
   bool operator ==(Object other) =>
@@ -763,7 +760,7 @@ class Coproduct10<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> {
   }
 
   @override
-  int get hashCode => hashObjects(<dynamic>[
+  int get hashCode => Object.hash(
         _value1,
         _value2,
         _value3,
@@ -774,7 +771,7 @@ class Coproduct10<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> {
         _value8,
         _value9,
         _value10,
-      ]);
+      );
 
   @override
   bool operator ==(Object other) =>
