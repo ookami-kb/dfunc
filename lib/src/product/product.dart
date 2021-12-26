@@ -1,5 +1,3 @@
-import '../utils/hash.dart';
-
 class Product0 {
   const Product0();
 
@@ -36,7 +34,7 @@ class Product2<T1, T2> {
   final T2 item2;
 
   @override
-  int get hashCode => hash2(item1, item2);
+  int get hashCode => Object.hash(item1, item2);
 
   @override
   bool operator ==(Object other) =>
@@ -56,7 +54,7 @@ class Product3<T1, T2, T3> {
   final T3 item3;
 
   @override
-  int get hashCode => hash3(item1, item2, item3);
+  int get hashCode => Object.hash(item1, item2, item3);
 
   @override
   bool operator ==(Object other) =>
@@ -81,7 +79,7 @@ class Product4<T1, T2, T3, T4> {
   final T4 item4;
 
   @override
-  int get hashCode => hashObjects(<dynamic>[item1, item2, item3, item4]);
+  int get hashCode => Object.hash(item1, item2, item3, item4);
 
   @override
   bool operator ==(Object other) =>
@@ -109,7 +107,7 @@ class Product5<T1, T2, T3, T4, T5> {
   final T5 item5;
 
   @override
-  int get hashCode => hashObjects(<dynamic>[item1, item2, item3, item4, item5]);
+  int get hashCode => Object.hash(item1, item2, item3, item4, item5);
 
   @override
   bool operator ==(Object other) =>
