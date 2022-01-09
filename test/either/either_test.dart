@@ -261,4 +261,16 @@ void main() {
       expect(result.fold(always(null), identity), const Product2(1, 1));
     });
   });
+
+  group('Shortcuts', () {
+    test('creates left', () {
+      final Either<int, String> value = left(0);
+      expect(value, const Either<int, String>.left(0));
+    });
+
+    test('creates right', () {
+      final Either<int, String> value = right('right');
+      expect(value, const Either<int, String>.right('right'));
+    });
+  });
 }
