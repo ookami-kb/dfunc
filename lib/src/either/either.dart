@@ -45,6 +45,12 @@ abstract class Either<L, R> implements Coproduct2<L, R> {
           : Either.right(Product2(_right, other._right));
 }
 
+/// Sortcut for [Either.left].
+Either<L, R> left<L, R>(L value) => Either.left(value);
+
+/// Shortcut for [Either.right].
+Either<L, R> right<L, R>(R value) => Either.right(value);
+
 class _Left<L, R> extends Either<L, R> {
   const _Left._(this._value) : super._();
 
