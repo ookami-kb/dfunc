@@ -27,9 +27,6 @@ jobs:
         run: dart run test --coverage=coverage
 
       - name: Generate coverage report
-        run: >
-          dart run coverage:format_coverage -i coverage -o coverage/coverage.lcov --lcov \
-            --report-on=lib \
-            --packages=.packages
+        run: dart run coverage:format_coverage -i coverage -o coverage/coverage.lcov --lcov --report-on=lib
 
       - uses: codecov/codecov-action@v2
