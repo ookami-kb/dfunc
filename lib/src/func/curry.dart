@@ -1,4 +1,4 @@
-import '../func.dart';
+import 'package:dfunc/src/func.dart';
 
 Func1<A, Func1<B, C>> curry<A, B, C>(Func2<A, B, C> f) => _curry(f);
 

@@ -1,4 +1,4 @@
-import '../../dfunc.dart';
+import 'package:dfunc/dfunc.dart';
 
 class Coproduct0 {
   const Coproduct0.empty();
@@ -48,9 +48,9 @@ class Coproduct2<T1, T2> {
   R fold<R>(R Function(T1) match1, R Function(T2) match2) {
     switch (_discriminator) {
       case 0:
-        return match1(_value1!);
+        return match1(_value1 as T1);
       default:
-        return match2(_value2!);
+        return match2(_value2 as T2);
     }
   }
 
@@ -94,11 +94,11 @@ class Coproduct3<T1, T2, T3> {
   ) {
     switch (_discriminator) {
       case 0:
-        return match1(_value1!);
+        return match1(_value1 as T1);
       case 1:
-        return match2(_value2!);
+        return match2(_value2 as T2);
       default:
-        return match3(_value3!);
+        return match3(_value3 as T3);
     }
   }
 
@@ -148,13 +148,13 @@ class Coproduct4<T1, T2, T3, T4> {
   ) {
     switch (_discriminator) {
       case 0:
-        return match1(_value1!);
+        return match1(_value1 as T1);
       case 1:
-        return match2(_value2!);
+        return match2(_value2 as T2);
       case 2:
-        return match3(_value3!);
+        return match3(_value3 as T3);
       default:
-        return match4(_value4!);
+        return match4(_value4 as T4);
     }
   }
 
@@ -210,15 +210,15 @@ class Coproduct5<T1, T2, T3, T4, T5> {
   ) {
     switch (_discriminator) {
       case 0:
-        return match1(_value1!);
+        return match1(_value1 as T1);
       case 1:
-        return match2(_value2!);
+        return match2(_value2 as T2);
       case 2:
-        return match3(_value3!);
+        return match3(_value3 as T3);
       case 3:
-        return match4(_value4!);
+        return match4(_value4 as T4);
       default:
-        return match5(_value5!);
+        return match5(_value5 as T5);
     }
   }
 
@@ -287,17 +287,17 @@ class Coproduct6<T1, T2, T3, T4, T5, T6> {
   ) {
     switch (_discriminator) {
       case 0:
-        return match1(_value1!);
+        return match1(_value1 as T1);
       case 1:
-        return match2(_value2!);
+        return match2(_value2 as T2);
       case 2:
-        return match3(_value3!);
+        return match3(_value3 as T3);
       case 3:
-        return match4(_value4!);
+        return match4(_value4 as T4);
       case 4:
-        return match5(_value5!);
+        return match5(_value5 as T5);
       default:
-        return match6(_value6!);
+        return match6(_value6 as T6);
     }
   }
 
@@ -374,19 +374,19 @@ class Coproduct7<T1, T2, T3, T4, T5, T6, T7> {
   ) {
     switch (_discriminator) {
       case 0:
-        return match1(_value1!);
+        return match1(_value1 as T1);
       case 1:
-        return match2(_value2!);
+        return match2(_value2 as T2);
       case 2:
-        return match3(_value3!);
+        return match3(_value3 as T3);
       case 3:
-        return match4(_value4!);
+        return match4(_value4 as T4);
       case 4:
-        return match5(_value5!);
+        return match5(_value5 as T5);
       case 5:
-        return match6(_value6!);
+        return match6(_value6 as T6);
       default:
-        return match7(_value7!);
+        return match7(_value7 as T7);
     }
   }
 
@@ -484,21 +484,21 @@ class Coproduct8<T1, T2, T3, T4, T5, T6, T7, T8> {
   ) {
     switch (_discriminator) {
       case 0:
-        return match1(_value1!);
+        return match1(_value1 as T1);
       case 1:
-        return match2(_value2!);
+        return match2(_value2 as T2);
       case 2:
-        return match3(_value3!);
+        return match3(_value3 as T3);
       case 3:
-        return match4(_value4!);
+        return match4(_value4 as T4);
       case 4:
-        return match5(_value5!);
+        return match5(_value5 as T5);
       case 5:
-        return match6(_value6!);
+        return match6(_value6 as T6);
       case 6:
-        return match7(_value7!);
+        return match7(_value7 as T7);
       default:
-        return match8(_value8!);
+        return match8(_value8 as T8);
     }
   }
 
@@ -605,23 +605,23 @@ class Coproduct9<T1, T2, T3, T4, T5, T6, T7, T8, T9> {
   ) {
     switch (_discriminator) {
       case 0:
-        return match1(_value1!);
+        return match1(_value1 as T1);
       case 1:
-        return match2(_value2!);
+        return match2(_value2 as T2);
       case 2:
-        return match3(_value3!);
+        return match3(_value3 as T3);
       case 3:
-        return match4(_value4!);
+        return match4(_value4 as T4);
       case 4:
-        return match5(_value5!);
+        return match5(_value5 as T5);
       case 5:
-        return match6(_value6!);
+        return match6(_value6 as T6);
       case 6:
-        return match7(_value7!);
+        return match7(_value7 as T7);
       case 7:
-        return match8(_value8!);
+        return match8(_value8 as T8);
       default:
-        return match9(_value9!);
+        return match9(_value9 as T9);
     }
   }
 
@@ -737,25 +737,25 @@ class Coproduct10<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> {
   ) {
     switch (_discriminator) {
       case 0:
-        return match1(_value1!);
+        return match1(_value1 as T1);
       case 1:
-        return match2(_value2!);
+        return match2(_value2 as T2);
       case 2:
-        return match3(_value3!);
+        return match3(_value3 as T3);
       case 3:
-        return match4(_value4!);
+        return match4(_value4 as T4);
       case 4:
-        return match5(_value5!);
+        return match5(_value5 as T5);
       case 5:
-        return match6(_value6!);
+        return match6(_value6 as T6);
       case 6:
-        return match7(_value7!);
+        return match7(_value7 as T7);
       case 7:
-        return match8(_value8!);
+        return match8(_value8 as T8);
       case 8:
-        return match9(_value9!);
+        return match9(_value9 as T9);
       default:
-        return match10(_value10!);
+        return match10(_value10 as T10);
     }
   }
 

@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_nullable_for_final_variable_declarations
+
 import 'package:dfunc/dfunc.dart';
 import 'package:test/test.dart';
 

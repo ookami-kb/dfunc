@@ -1,5 +1,5 @@
-import '../dfunc.dart';
-import 'utils/list.dart';
+import 'package:dfunc/dfunc.dart';
+import 'package:dfunc/src/utils/list.dart';
 
 /// Returns a new [Iterable] with elements that are created by
 ///  calling `f` on each element of [items] in iteration order and

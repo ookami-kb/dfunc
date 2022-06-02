@@ -1,6 +1,6 @@
-import 'func.dart';
-import 'identity.dart';
-import 'scope.dart';
+import 'package:dfunc/src/func.dart';
+import 'package:dfunc/src/identity.dart';
+import 'package:dfunc/src/scope.dart';
 
 /// Transforms function [f] taking non-nullable argument into a function
 /// taking nullable argument.
@@ -24,6 +24,7 @@ C? map2<A extends Object, B extends Object, C extends Object>(
   Func2<A, B, C?> f,
 ) {
   if (a == null || b == null) return null;
+
   return f(a, b);
 }
 

@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import '../func.dart';
-import '../identity.dart';
-import 'either.dart';
+import 'package:dfunc/src/either/either.dart';
+import 'package:dfunc/src/func.dart';
+import 'package:dfunc/src/identity.dart';
 
 typedef AsyncEither<L, R> = Future<Either<L, R>>;
 
@@ -16,6 +16,7 @@ extension DoEither<L, R> on Either<L, R> {
   /// ```
   Either<L, R> doOnLeft(void Function(L v) block) => mapLeft((v) {
         block(v);
+
         return v;
       });
 
@@ -28,6 +29,7 @@ extension DoEither<L, R> on Either<L, R> {
   /// ```
   Either<L, R> doOnRight(void Function(R v) block) => map((v) {
         block(v);
+
         return v;
       });
 }
@@ -60,12 +62,14 @@ extension EitherAsync<L, R> on Either<L, R> {
   AsyncEither<L, R> doOnLeftAsync(FutureOr<void> Function(L v) block) =>
       mapLeftAsync((v) async {
         await block(v);
+
         return v;
       });
 
   AsyncEither<L, R> doOnRightAsync(FutureOr<void> Function(R v) block) =>
       mapAsync((v) async {
         await block(v);
+
         return v;
       });
 }
@@ -99,18 +103,21 @@ extension FutureEitherExtension<L, R> on AsyncEither<L, R> {
     FutureOr<T> Function(R) onRight,
   ) async {
     final v = await this;
+
     return v.fold(onLeft, onRight);
   }
 
   AsyncEither<L, R> doOnLeftAsync(FutureOr<void> Function(L v) block) async =>
       (await this).mapLeftAsync((v) async {
         await block(v);
+
         return v;
       });
 
   AsyncEither<L, R> doOnRightAsync(FutureOr<void> Function(R v) block) async =>
       (await this).mapAsync((v) async {
         await block(v);
+
         return v;
       });
 }
@@ -118,6 +125,7 @@ extension FutureEitherExtension<L, R> on AsyncEither<L, R> {
 extension SameEitherExtension<T> on FutureOr<Either<T, T>> {
   Future<T> join() async {
     final x = await this;
+
     return x.fold(identity, identity);
   }
 }
