@@ -1,5 +1,5 @@
-import 'func.dart';
-import 'utils/list.dart';
+import 'package:dfunc/src/func.dart';
+import 'package:dfunc/src/utils/list.dart';
 
 /// Creates map from [items]. Keys of the map are created by
 /// applying [getKey] function to the corresponding item of the list.

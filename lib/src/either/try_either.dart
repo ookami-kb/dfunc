@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import '../../dfunc.dart';
+import 'package:dfunc/dfunc.dart';
 
 typedef Result<T> = Either<Exception, T>;
 

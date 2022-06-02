@@ -1,4 +1,4 @@
-import 'func.dart';
+import 'package:dfunc/src/func.dart';
 
 /// Performs left-to-right function composition.
 ///
