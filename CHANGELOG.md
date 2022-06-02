@@ -1,3 +1,17 @@
+## 0.8.0
+
+> Note: This release has breaking changes.
+
+ - **REFACTOR**: Update to mews_pedantic 0.6.0.
+ - **FIX**: Update optional constraints, add docs.
+ - **FEAT**: Add intersperseWith.
+ - **FEAT**: Add Either shortcuts (#16).
+ - **FEAT**: Add optional utilities (#14).
+ - **FEAT**: Add String extensions.
+ - **FEAT**: Add `ifNull`.
+ - **DOCS**: Add codecov badge.
+ - **BREAKING** **REFACTOR**: Migrate to Object.hash (#15).
+
 ## 0.7.2
 
  - **FEAT**: Add `doOn*` extensions.
