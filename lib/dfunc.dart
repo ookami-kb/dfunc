@@ -33,4 +33,5 @@ export 'src/string_ext.dart';
 export 'src/substring.dart';
 export 'src/sum.dart';
 export 'src/t.dart';
+export 'src/transformer.dart';
 export 'src/zip.dart';
