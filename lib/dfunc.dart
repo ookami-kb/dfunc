@@ -20,6 +20,7 @@ export 'src/identity.dart';
 export 'src/ignore.dart';
 export 'src/intersperse.dart';
 export 'src/is_empty.dart';
+export 'src/iterable/extensions.dart';
 export 'src/limit.dart';
 export 'src/map.dart';
 export 'src/map_by.dart';
