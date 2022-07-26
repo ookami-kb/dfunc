@@ -1,3 +1,8 @@
+## 0.8.0+1
+
+ - **FIX**: Export Iterable extensions (#18).
+ - **FIX**: Export Transformer.
+
 ## 0.8.0
 
 > Note: This release has breaking changes.
