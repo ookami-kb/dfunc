@@ -29,4 +29,4 @@ jobs:
       - name: Generate coverage report
         run: dart run coverage:format_coverage -i coverage -o coverage/coverage.lcov --lcov --report-on=lib
 
-      - uses: codecov/codecov-action@v2
+      - uses: codecov/codecov-action@v3
