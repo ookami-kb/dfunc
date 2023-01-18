@@ -1,3 +1,7 @@
+## 0.8.1
+
+ - **FEAT**: add Iterable<Result<T>>.sequence() (#19).
+
 ## 0.8.0+1
 
  - **FIX**: Export Iterable extensions (#18).
