@@ -44,4 +44,30 @@ void main() {
       expect((await parse('wrong').toEither()).isLeft(), true);
     });
   });
+
+  group('Result.sequence', () {
+    test('returns right', () {
+      [
+        const Either<Exception, int>.right(1),
+        const Either<Exception, int>.right(2),
+        const Either<Exception, int>.right(3),
+      ].sequence().fold(
+            (l) => fail('Expected right, got left: $l'),
+            (r) => expect(r, [1, 2, 3]),
+          );
+    });
+
+    test('returns left on first error', () {
+      final exception = Exception('error');
+
+      [
+        const Either<Exception, int>.right(1),
+        Either<Exception, int>.left(exception),
+        const Either<Exception, int>.right(3),
+      ].sequence().fold(
+            (l) => expect(l, exception),
+            (r) => fail('Expected left, got right: $r'),
+          );
+    });
+  });
 }
