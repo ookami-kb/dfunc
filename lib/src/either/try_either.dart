@@ -39,3 +39,8 @@ extension FutureToEitherExt<T> on Future<T> {
     }
   }
 }
+
+extension IterableResultExt<T> on Iterable<Result<T>> {
+  Result<List<T>> sequence() =>
+      tryEither((bind) => this.map((e) => bind(e)).toList());
+}
