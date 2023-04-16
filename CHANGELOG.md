@@ -1,3 +1,9 @@
+## 0.8.2
+
+ - **REFACTOR**: bump `mews_pedantic` (#24).
+ - **FEAT**: add `beforeFirst` and `afterLast` to `intersperse(With)` (#23).
+ - **FEAT**: add `maybeWhereType` (#22).
+
 ## 0.8.1
 
  - **FEAT**: add Iterable<Result<T>>.sequence() (#19).
