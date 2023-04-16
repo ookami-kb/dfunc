@@ -1,4 +1,8 @@
 name: dfunc
 
 packages:
-  - '**'
+  - "."
+
+command:
+  version:
+    workspaceChangelog: false
