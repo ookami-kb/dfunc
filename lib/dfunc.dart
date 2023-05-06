@@ -5,7 +5,6 @@ export 'src/cast.dart';
 export 'src/compact.dart';
 export 'src/complement.dart';
 export 'src/compose.dart';
-export 'src/coproduct/coproduct.dart';
 export 'src/either/either.dart';
 export 'src/either/eithers.dart';
 export 'src/either/extensions.dart';
