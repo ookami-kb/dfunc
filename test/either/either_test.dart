@@ -259,7 +259,7 @@ void main() {
       const e2 = Either<String, double>.right(1);
       final result = e1.combine(e2);
 
-      expect(result.fold(always(null), identity), const Product2(1, 1));
+      expect(result.fold(always(null), identity), const (1, 1));
     });
   });
 

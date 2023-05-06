@@ -28,7 +28,6 @@ export 'src/map_indexed.dart';
 export 'src/maybe.dart';
 export 'src/optional.dart';
 export 'src/pipe.dart';
-export 'src/product/product.dart';
 export 'src/scope.dart';
 export 'src/string_ext.dart';
 export 'src/substring.dart';

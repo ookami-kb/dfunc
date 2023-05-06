@@ -9,7 +9,7 @@ void main() {
     const e4 = Either<String, int>.right(4);
     const e5 = Either<String, int>.right(5);
     final result = Eithers.combine5(e1, e2, e3, e4, e5);
-    expect(result.fold(always(null), identity), const Product5(1, 2, 3, 4, 5));
+    expect(result.fold(always(null), identity), const (1, 2, 3, 4, 5));
   });
 
   test('combines 5 eithers with 1 left correctly', () {

@@ -35,14 +35,14 @@ abstract class Either<L, R> implements Coproduct2<L, R> {
 
   Either<L1, R> mapLeft<L1>(L1 Function(L) f) => fold(
         (l) => Either.left(f(l)),
-        (r) => Either.right(r),
+        Either.right,
       );
 
-  Either<L, Product2<R, R2>> combine<R2>(Either<L, R2> other) => isLeft()
+  Either<L, (R, R2)> combine<R2>(Either<L, R2> other) => isLeft()
       ? Either.left(_left)
       : other.isLeft()
           ? Either.left(other._left)
-          : Either.right(Product2(_right, other._right));
+          : Either.right((_right, other._right));
 }
 
 /// Sortcut for [Either.left].

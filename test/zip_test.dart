@@ -8,9 +8,9 @@ void main() {
     expect(
       first.zipWith(second),
       const [
-        Product2(1, 'a'),
-        Product2(2, 'b'),
-        Product2(3, 'c'),
+        (1, 'a'),
+        (2, 'b'),
+        (3, 'c'),
       ],
     );
   });
