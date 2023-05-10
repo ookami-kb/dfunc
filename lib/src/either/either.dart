@@ -1,32 +1,24 @@
-// ignore_for_file: avoid_implementing_value_types
-
-import 'package:dfunc/dfunc.dart';
-
-/// One of the popular examples of [Coproduct2] type.
-///
-/// It represents a value that can be either of type [L] or of type [R].
-/// Usually [L] is assumed to be of Error type and [R] of Right type, e.g.
-/// in pseudo-code:
+/// Represents a value that can be either of type [L] or of type [R].
+/// Usually [L] is assumed to be of Error type and [R] of Right type, e.g.:
 ///
 /// ```
-/// type Result<T> = Either<Exception, T>
+/// typedef Result<T> = Either<Exception, T>;
 /// ```
-abstract class Either<L, R> implements Coproduct2<L, R> {
+sealed class Either<L, R> {
   const Either._();
 
-  const factory Either.left(L value) = _Left<L, R>._;
+  const factory Either.left(L value) = Left<L, R>.new;
 
-  const factory Either.right(R value) = _Right<L, R>._;
+  const factory Either.right(R value) = Right<L, R>.new;
 
-  bool isLeft() => this is _Left;
+  bool isLeft() => this is Left;
 
-  bool isRight() => this is _Right;
+  bool isRight() => this is Right;
 
   L get _left;
 
   R get _right;
 
-  @override
   T fold<T>(T Function(L) onLeft, T Function(R) onRight);
 
   Either<L, T> map<T>(T Function(R) f);
@@ -35,14 +27,14 @@ abstract class Either<L, R> implements Coproduct2<L, R> {
 
   Either<L1, R> mapLeft<L1>(L1 Function(L) f) => fold(
         (l) => Either.left(f(l)),
-        (r) => Either.right(r),
+        Either.right,
       );
 
-  Either<L, Product2<R, R2>> combine<R2>(Either<L, R2> other) => isLeft()
+  Either<L, (R, R2)> combine<R2>(Either<L, R2> other) => isLeft()
       ? Either.left(_left)
       : other.isLeft()
           ? Either.left(other._left)
-          : Either.right(Product2(_right, other._right));
+          : Either.right((_right, other._right));
 }
 
 /// Sortcut for [Either.left].
@@ -51,64 +43,63 @@ Either<L, R> left<L, R>(L value) => Either.left(value);
 /// Shortcut for [Either.right].
 Either<L, R> right<L, R>(R value) => Either.right(value);
 
-class _Left<L, R> extends Either<L, R> {
-  const _Left._(this._value) : super._();
+final class Left<L, R> extends Either<L, R> {
+  const Left(this.value) : super._();
 
-  final L _value;
+  final L value;
 
   @override
-  L get _left => _value;
+  L get _left => value;
 
   @override
   R get _right => throw StateError('right called on left value');
 
   @override
-  T fold<T>(T Function(L) onLeft, T Function(R) onRight) => onLeft(_value);
+  T fold<T>(T Function(L) onLeft, T Function(R) onRight) => onLeft(value);
 
   @override
-  Either<L, T> map<T>(T Function(R) f) => _Left._(_value);
+  Either<L, T> map<T>(T Function(R) f) => Left(value);
 
   @override
-  Either<L, T> flatMap<T>(Either<L, T> Function(R) f) => _Left._(_value);
+  Either<L, T> flatMap<T>(Either<L, T> Function(R) f) => Left(value);
 
   @override
-  int get hashCode => _value.hashCode;
+  int get hashCode => value.hashCode;
 
   @override
-  bool operator ==(Object other) =>
-      other is _Left<L, R> && other._value == _value;
+  bool operator ==(Object other) => other is Left<L, R> && other.value == value;
 
   @override
-  String toString() => 'Left($_value)';
+  String toString() => 'Left($value)';
 }
 
-class _Right<L, R> extends Either<L, R> {
-  const _Right._(this._value) : super._();
+final class Right<L, R> extends Either<L, R> {
+  const Right(this.value) : super._();
 
-  final R _value;
+  final R value;
 
   @override
   L get _left => throw StateError('left called on right value');
 
   @override
-  R get _right => _value;
+  R get _right => value;
 
   @override
-  T fold<T>(T Function(L) onLeft, T Function(R) onRight) => onRight(_value);
+  T fold<T>(T Function(L) onLeft, T Function(R) onRight) => onRight(value);
 
   @override
-  Either<L, T> map<T>(T Function(R) f) => _Right._(f(_value));
+  Either<L, T> map<T>(T Function(R) f) => Right(f(value));
 
   @override
-  Either<L, T> flatMap<T>(Either<L, T> Function(R) f) => f(_value);
+  Either<L, T> flatMap<T>(Either<L, T> Function(R) f) => f(value);
 
   @override
-  int get hashCode => _value.hashCode;
+  int get hashCode => value.hashCode;
 
   @override
   bool operator ==(Object other) =>
-      other is _Right<L, R> && other._value == _value;
+      other is Right<L, R> && other.value == value;
 
   @override
-  String toString() => 'Right($_value)';
+  String toString() => 'Right($value)';
 }
