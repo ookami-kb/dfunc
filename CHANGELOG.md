@@ -1,3 +1,9 @@
+## 0.9.0
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **FEAT**: migrate to Dart 3 (#25).
+
 ## 0.8.2
 
  - **REFACTOR**: bump `mews_pedantic` (#24).
