@@ -1,3 +1,5 @@
+import 'dart:async';
+
 /// Represents a value that can be either of type [L] or of type [R].
 /// Usually [L] is assumed to be of Error type and [R] of Right type, e.g.:
 ///
@@ -10,6 +12,33 @@ sealed class Either<L, R> {
   const factory Either.left(L value) = Left<L, R>.new;
 
   const factory Either.right(R value) = Right<L, R>.new;
+
+  /// Wraps [block] function into try..catch and returns [Right] with the
+  /// result. In case of any [Exception] returns [Left] with the exception.
+  ///
+  /// It doesn't catch [Error]s as it usually means a bug in the code.
+  static Result<R> wrap<R>(R Function() block) {
+    try {
+      return Either.right(block());
+    } on Exception catch (e) {
+      return Either.left(e);
+    }
+  }
+
+  /// Wraps [block] function into try..catch asynchronously and returns [Future]
+  /// with [Right] with the result. In case of any [Exception] returns [Future]
+  /// with [Left] containing the exception.
+  ///
+  /// It doesn't catch [Error]s as it usually means a bug in the code.
+  static AsyncResult<R> wrapAsync<R>(
+    FutureOr<R> Function() block,
+  ) async {
+    try {
+      return Either.right(await block());
+    } on Exception catch (e) {
+      return Either.left(e);
+    }
+  }
 
   bool isLeft() => this is Left;
 
@@ -36,6 +65,10 @@ sealed class Either<L, R> {
           ? Either.left(other._left)
           : Either.right((_right, other._right));
 }
+
+typedef Result<T> = Either<Exception, T>;
+
+typedef AsyncResult<T> = Future<Result<T>>;
 
 /// Sortcut for [Either.left].
 Either<L, R> left<L, R>(L value) => Either.left(value);

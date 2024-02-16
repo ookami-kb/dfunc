@@ -4,13 +4,13 @@ import 'package:test/test.dart';
 void main() {
   group('tryEither', () {
     test('returns right', () {
-      final result = tryEither<int>((bind) => int.parse('123'));
+      final result = Either.wrap(() => int.parse('123'));
 
-      expect(result, const Either<Exception, int>.right(123));
+      expect(result, const Result<int>.right(123));
     });
 
     test('returns left on exception', () {
-      final result = tryEither<int>((bind) => int.parse('wrong'));
+      final result = Either.wrap(() => int.parse('wrong'));
 
       expect(result.isLeft(), true);
     });
@@ -18,13 +18,13 @@ void main() {
 
   group('tryEitherAsync', () {
     test('returns right', () async {
-      final result = await tryEitherAsync<int>((bind) => int.parse('123'));
+      final result = await Either.wrapAsync(() => int.parse('123'));
 
-      expect(result, const Either<Exception, int>.right(123));
+      expect(result, const Result<int>.right(123));
     });
 
     test('returns left on exception', () async {
-      final result = await tryEitherAsync<int>((bind) => int.parse('wrong'));
+      final result = await Either.wrapAsync(() => int.parse('wrong'));
 
       expect(result.isLeft(), true);
     });
@@ -36,7 +36,7 @@ void main() {
     test('returns right', () async {
       expect(
         await parse('123').toEither(),
-        const Either<Exception, int>.right(123),
+        const Result<int>.right(123),
       );
     });
 
@@ -48,9 +48,9 @@ void main() {
   group('Result.sequence', () {
     test('returns right', () {
       [
-        const Either<Exception, int>.right(1),
-        const Either<Exception, int>.right(2),
-        const Either<Exception, int>.right(3),
+        const Result<int>.right(1),
+        const Result<int>.right(2),
+        const Result<int>.right(3),
       ].sequence().fold(
             (l) => fail('Expected right, got left: $l'),
             (r) => expect(r, [1, 2, 3]),
@@ -61,9 +61,9 @@ void main() {
       final exception = Exception('error');
 
       [
-        const Either<Exception, int>.right(1),
-        Either<Exception, int>.left(exception),
-        const Either<Exception, int>.right(3),
+        const Result<int>.right(1),
+        Result<int>.left(exception),
+        const Result<int>.right(3),
       ].sequence().fold(
             (l) => expect(l, exception),
             (r) => fail('Expected left, got right: $r'),
