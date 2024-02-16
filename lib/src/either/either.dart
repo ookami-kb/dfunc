@@ -13,33 +13,6 @@ sealed class Either<L, R> {
 
   const factory Either.right(R value) = Right<L, R>.new;
 
-  /// Wraps [block] function into try..catch and returns [Right] with the
-  /// result. In case of any [Exception] returns [Left] with the exception.
-  ///
-  /// It doesn't catch [Error]s as it usually means a bug in the code.
-  static Result<R> wrap<R>(R Function() block) {
-    try {
-      return Either.right(block());
-    } on Exception catch (e) {
-      return Either.left(e);
-    }
-  }
-
-  /// Wraps [block] function into try..catch asynchronously and returns [Future]
-  /// with [Right] with the result. In case of any [Exception] returns [Future]
-  /// with [Left] containing the exception.
-  ///
-  /// It doesn't catch [Error]s as it usually means a bug in the code.
-  static AsyncResult<R> wrapAsync<R>(
-    FutureOr<R> Function() block,
-  ) async {
-    try {
-      return Either.right(await block());
-    } on Exception catch (e) {
-      return Either.left(e);
-    }
-  }
-
   bool isLeft() => this is Left;
 
   bool isRight() => this is Right;
