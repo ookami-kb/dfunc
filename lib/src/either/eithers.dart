@@ -1,7 +1,7 @@
 import 'package:dfunc/src/either/either.dart';
 
 abstract class Eithers {
-  Eithers._();
+  const Eithers._();
 
   static Either<L, (R1, R2)> combine2<L, R1, R2>(
     Either<L, R1> first,

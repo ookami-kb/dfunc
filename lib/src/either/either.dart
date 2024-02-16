@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_equals_and_hash_code_on_mutable_classes
+
 /// Represents a value that can be either of type [L] or of type [R].
 /// Usually [L] is assumed to be of Error type and [R] of Right type, e.g.:
 ///

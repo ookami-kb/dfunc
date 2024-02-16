@@ -15,7 +15,7 @@ void main() {
     });
 
     test('also', () {
-      var x = 0;
+      int x = 0;
       final result = 3.also((it) => x += 5);
       expect(result, 3);
       expect(x, 5);

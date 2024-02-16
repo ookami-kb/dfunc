@@ -65,7 +65,7 @@ extension Intersperse<A> on Iterable<A> {
       }
 
       yield itemBuilder(iterator.current);
-      var prev = iterator.current;
+      A prev = iterator.current;
       while (iterator.moveNext()) {
         yield separatorBuilder(prev, iterator.current);
         prev = iterator.current;
