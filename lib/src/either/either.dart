@@ -39,10 +39,6 @@ sealed class Either<L, R> {
           : Either.right((_right, other._right));
 }
 
-typedef Result<T> = Either<Exception, T>;
-
-typedef AsyncResult<T> = Future<Result<T>>;
-
 /// Sortcut for [Either.left].
 Either<L, R> left<L, R>(L value) => Either.left(value);
 

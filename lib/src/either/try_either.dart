@@ -2,6 +2,9 @@ import 'dart:async';
 
 import 'package:dfunc/dfunc.dart';
 
+typedef Result<T> = Either<Exception, T>;
+typedef AsyncResult<T> = Future<Result<T>>;
+
 extension ResultUnwrap<R> on Result<R> {
   R unwrap() => fold((e) => throw e, (r) => r);
 }
