@@ -31,7 +31,7 @@ void main() {
   });
 
   group('toEither', () {
-    Future<int> parse(String value) async => int.parse(value);
+    Future<int> parse(String value) => Future.value(int.parse(value));
 
     test('returns right', () async {
       expect(

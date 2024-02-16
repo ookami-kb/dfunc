@@ -3,7 +3,7 @@ import 'package:dfunc/src/func.dart';
 typedef State<S, A> = (A, S) Function(S);
 
 abstract class States {
-  States._();
+  const States._();
 
   static State<S, A> unit<S, A>(A a) => (s) => (a, s);
 
@@ -37,7 +37,7 @@ extension StateExt<S, A> on State<S, A> {
 extension StateExtIterable<S, A> on Iterable<State<S, A>> {
   State<S, Iterable<A>> sequence() => (s) {
         final r = <A>[];
-        var x = s;
+        S x = s;
         for (final a in this) {
           final s2 = a(x);
           r.add(s2.$1);

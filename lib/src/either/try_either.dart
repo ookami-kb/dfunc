@@ -16,8 +16,8 @@ extension ResultUnwrap<R> on Result<R> {
 Result<T> tryEither<T>(T Function() block) {
   try {
     return Either.right(block());
-  } on Exception catch (e) {
-    return Either.left(e);
+  } on Exception catch (error) {
+    return Either.left(error);
   }
 }
 
@@ -29,13 +29,13 @@ Result<T> tryEither<T>(T Function() block) {
 AsyncResult<T> tryEitherAsync<T>(FutureOr<T> Function() block) async {
   try {
     return Either.right(await block());
-  } on Exception catch (e) {
-    return Either.left(e);
+  } on Exception catch (error) {
+    return Either.left(error);
   }
 }
 
 extension FutureToEitherExt<T> on Future<T> {
-  AsyncResult<T> toEither() async => tryEitherAsync(() => this);
+  AsyncResult<T> toEither() => tryEitherAsync(() => this);
 }
 
 extension IterableResultExt<T> on Iterable<Result<T>> {

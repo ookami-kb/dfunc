@@ -99,7 +99,7 @@ void main() {
     test('Either::flatMapLeftAsync', () async {
       final either =
           await Either<Exception, String>.left(Exception()).flatMapLeftAsync(
-        (e) async => const Either<String, String>.left('Error'),
+        (e) => const Either<String, String>.left('Error'),
       );
       expect(either.fold(identity, (_) => throw Error()), 'Error');
     });
@@ -155,8 +155,7 @@ void main() {
 
     test('Future<Either>::foldAsync with async mappers', () async {
       final either = Future.value(const Either<int, String>.right('Test'));
-      final value =
-          await either.foldAsync((_) async => false, (_) async => true);
+      final value = await either.foldAsync((_) => false, (_) => true);
       expect(value, true);
     });
 
@@ -168,7 +167,7 @@ void main() {
 
     test('Future<Either>::mapAsync with async mapper', () async {
       final either = Future.value(const Either<int, String>.right('123'));
-      final value = await either.mapAsync((x) async => int.parse(x));
+      final value = await either.mapAsync(int.parse);
       expect(value.fold(always(0), identity), 123);
     });
 
@@ -180,14 +179,14 @@ void main() {
 
     test('Future<Either>::mapLeftAsync with async mapper', () async {
       final either = Future.value(const Either<String, int>.left('123'));
-      final value = await either.mapLeftAsync((x) async => int.parse(x));
+      final value = await either.mapLeftAsync(int.parse);
       expect(value.fold(identity, always(0)), 123);
     });
 
     test('Future<Either>::flatMapAsync with async mapper', () async {
       final either = Future.value(const Either<int, String>.right('123'));
       final value =
-          await either.flatMapAsync((x) async => Either.right(int.parse(x)));
+          await either.flatMapAsync((x) => Either.right(int.parse(x)));
       expect(value.fold(always(0), identity), 123);
     });
 

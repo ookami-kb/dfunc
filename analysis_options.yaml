@@ -1,1 +1,9 @@
 include: package:mews_pedantic/analysis_options.yaml
+
+dart_code_metrics:
+  rules:
+    prefer-explicit-parameter-names: false
+    match-getter-setter-field-names: false
+    move-records-to-typedefs: false
+    avoid-barrel-files: false
+    prefer-typedefs-for-callbacks: false

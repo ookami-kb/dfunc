@@ -61,7 +61,7 @@ void main() {
     String buildItem(int a) => a.toString();
     String buildSeparator(int a, int b) => '<$a-$b>';
 
-    sut(
+    Iterable<String> sut(
       Iterable<int> items, {
       bool beforeFirst = false,
       bool afterLast = false,
