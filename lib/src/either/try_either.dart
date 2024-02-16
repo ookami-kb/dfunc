@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:dfunc/dfunc.dart';
 
-extension EitherUnwrap<R> on Result<R> {
+extension ResultUnwrap<R> on Result<R> {
   R unwrap() => fold((e) => throw e, (r) => r);
 }
 
