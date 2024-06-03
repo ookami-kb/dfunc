@@ -1,3 +1,12 @@
+## 0.10.0
+
+> Note: This release has breaking changes.
+
+ - **REFACTOR**: upgrade mews_pedantic.
+ - **FEAT**: revert unwrap (#28).
+ - **FEAT**: add memoize.
+ - **BREAKING** **FEAT**: add Result.unwrap (#26).
+
 ## 0.9.0
 
 > Note: This release has breaking changes.
