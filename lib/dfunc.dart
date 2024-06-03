@@ -23,6 +23,7 @@ export 'src/map.dart';
 export 'src/map_by.dart';
 export 'src/map_indexed.dart';
 export 'src/maybe.dart';
+export 'src/memoize.dart';
 export 'src/optional.dart';
 export 'src/pipe.dart';
 export 'src/scope.dart';
