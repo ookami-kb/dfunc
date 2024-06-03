@@ -4,13 +4,13 @@ import 'package:test/test.dart';
 void main() {
   group('tryEither', () {
     test('returns right', () {
-      final result = tryEither(() => int.parse('123'));
+      final result = tryEither((_) => int.parse('123'));
 
       expect(result, const Result<int>.right(123));
     });
 
     test('returns left on exception', () {
-      final result = tryEither(() => int.parse('wrong'));
+      final result = tryEither((_) => int.parse('wrong'));
 
       expect(result.isLeft(), true);
     });
@@ -18,13 +18,13 @@ void main() {
 
   group('tryEitherAsync', () {
     test('returns right', () async {
-      final result = await tryEitherAsync(() => int.parse('123'));
+      final result = await tryEitherAsync((_) => int.parse('123'));
 
       expect(result, const Result<int>.right(123));
     });
 
     test('returns left on exception', () async {
-      final result = await tryEitherAsync(() => int.parse('wrong'));
+      final result = await tryEitherAsync((_) => int.parse('wrong'));
 
       expect(result.isLeft(), true);
     });
