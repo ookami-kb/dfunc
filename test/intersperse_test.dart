@@ -1,3 +1,5 @@
+// ignore_for_file: avoid-unnecessary-collections, avoid-duplicate-collection-elements
+
 import 'package:dfunc/dfunc.dart';
 import 'package:test/test.dart';
 
